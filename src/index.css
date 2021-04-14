@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Rubik:wght@300;400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply w-screen h-screen bg-gray-900 antialiased text-gray-100 font-block;
+}
+
+/* For Chrome */
+.disable-scrollbars::-webkit-scrollbar {
+    width: 8px;
+    height: 100%;
+    background: transparent; /* Chrome/Safari/Webkit */
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+.disable-scrollbars:hover::-webkit-scrollbar-thumb {
+  background-color: #252525;
+}
+
+/* For Firefox */
+.scrollbars {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+
+.scrollbars:hover {
+  scrollbar-color: #252525 transparent;
+}
+
+#root {
+  @apply w-screen h-screen
+}
+
+.search-btn {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  margin-left: -12px;
+}
+
+.search-input {
+  clip-path: polygon(0% 0%, 100% 0, 93% 50%, 100% 100%, 0% 100%);
+}
+
