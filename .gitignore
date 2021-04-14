@@ -1,0 +1,8 @@
+node_modules
+dist
+stats.json
+.DS_Store
+# jetbrains
+.idea
+.env
+.env.*
