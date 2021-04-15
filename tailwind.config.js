@@ -4,14 +4,20 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {
-      thumbnailCard: '0 -2px 10px rgba(0,0,0,0.6)'
+      thumbnailCard: '0 -2px 10px rgba(0,0,0,0.6)',
+      sidenav: '2px 0px 10px rgba(0,0,0,0.6)',
     },
     extend: {
       fontFamily: {
         block: ['Rubik', 'Montserrat', 'Roboto'],
       },
       backgroundImage: theme => ({
-        'layout-image': "url('/src/assets/badboys.jpg')",
+        'badboys': "url('/src/assets/badboys.jpg')",
+        'nobody': "url('/src/assets/nobody.jpg')",
+        'coming2america': "url('/src/assets/coming2america.jpg')",
+        'loki': "url('/src/assets/loki.jpg')",
+        'falcon': "url('/src/assets/falcon.jpg')",
+        'jack': "url('/src/assets/jack.png')",
       })
     },
   },
