@@ -1,12 +1,19 @@
+import clsx from 'clsx';
+import {useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 import {Layout} from './components/Layout/Layout';
-import Home from './pages/Home';
+import SmartCompressedImage from './components/SmartCompressedImage/SmartCompressedImage'
+import {useHome} from './context/HomeContext';
 import {sidenavRoutes} from './utils/router'
+import {trendingData} from './utils/thumbnailData';
+
 
 export default function App() {
+  const background = useHome()
+
   return (
     <div
-      className='w-full h-full bg-layout-image bg-cover lg:p-12'
+      className={clsx(background.bg, 'w-full h-full bg-cover lg:p-12')}
     >
       <Layout>
         <Routes>
@@ -23,9 +30,6 @@ export default function App() {
           }
         </Routes>
       </Layout>
-
-
-
     </div>
   )
 }
