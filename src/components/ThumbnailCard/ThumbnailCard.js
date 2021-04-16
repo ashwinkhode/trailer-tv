@@ -9,7 +9,8 @@ const ThumbnailCard = ({
 }) => {
   const viewsCountRounded = String(viewsCount).charAt(0) + String(viewsCount).charAt(1)
   return (
-    <div className='flex flex-col rounded-xl overflow-hidden bg-[#1A1A1A] shadow-thumbnailCard'>
+
+    <div className='w-full h-full flex flex-col rounded-xl overflow-hidden bg-[#1A1A1A] shadow-thumbnailCard'>
       <div className='w-full'>
         <img
           src={thumbnailURL}

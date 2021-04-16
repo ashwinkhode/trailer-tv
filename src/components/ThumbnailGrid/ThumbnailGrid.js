@@ -1,32 +1,17 @@
-import {BsArrowRight} from 'react-icons/bs'
+import React from 'react'
 import ThumbnailCard from '../ThumbnailCard/ThumbnailCard'
 
-const ThumbnailGrid = ({heading, thumbnailArray}) => {
+const ThumbnailGrid = ({thumbnailArray}) => {
   return (
-    <div className='flex flex-col justify-between items-center space-y-4'>
-      <div
-        className='w-full flex flex-row justify-between'>
-        <h1
-          className='font-bold text-2xl'
-        >
-          {heading}
-        </h1>
-        <div
-          className='flex flex-row justify-end items-center'>
-          <button className='flex flex-row justify-center items-center gap-2'>
-            Explore
-              <BsArrowRight />
-          </button>
-        </div>
-
-      </div>
-
-      <div className='w-full flex flex-row space-x-4'>
-        {
-          thumbnailArray.map(
-            ({
-              title, channel, viewsCount, uploadDuration, thumbnailURL
-            }) => (
+    <div className="w-full flex flex-wrap overflow-hidden sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
+      {
+        thumbnailArray.map(
+          ({
+            title, channel, viewsCount, uploadDuration, thumbnailURL
+          }) => (
+            <div
+              key={title}
+              className="my-2 px-2 w-full overflow-hidden sm:my-2 sm:px-2 sm:w-full md:my-3 md:px-3 md:w-1/2 lg:mb-4 lg:mt-0 lg:px-2 lg:w-1/5 xl:mb-4 xl:mt-0 xl:px-2 xl:w-1/5">
               <ThumbnailCard
                 key={title}
                 title={title}
@@ -35,17 +20,12 @@ const ThumbnailGrid = ({heading, thumbnailArray}) => {
                 viewsCount={viewsCount}
                 uploadDuration={uploadDuration}
               />
-            )
+            </div>
+
           )
-        }
-      </div>
-      {/* <div
-        className='flex flex-row justify-end items-center'>
-        <button className='flex flex-row justify-center items-center gap-2'>
-          Explore
-              <BsArrowRight />
-        </button>
-      </div> */}
+        )
+      }
+
     </div>
   )
 }
