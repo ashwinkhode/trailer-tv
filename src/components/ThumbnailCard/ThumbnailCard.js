@@ -5,13 +5,13 @@ const ThumbnailCard = ({
   channel = 'Funanimation',
   thumbnailURL = '../../assets/trailer1.jpg',
   viewsCount = '6.2',
-  uploadDuration = '4',
+  uploadDuration = '4 days',
 }) => {
   const viewsCountRounded = String(viewsCount).charAt(0) + String(viewsCount).charAt(1)
   return (
 
-    <div className='w-full h-full flex flex-col rounded-xl overflow-hidden bg-[#1A1A1A] shadow-thumbnailCard'>
-      <div className='w-full'>
+    <div className='w-full h-full flex flex-col rounded-xl  bg-[#1A1A1A] shadow-thumbnailCard'>
+      <div className='w-full rounded-t-xl overflow-hidden'>
         <img
           src={thumbnailURL}
           alt={title}
