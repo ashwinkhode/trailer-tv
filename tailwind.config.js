@@ -12,17 +12,20 @@ module.exports = {
         block: ['Rubik', 'Montserrat', 'Roboto'],
       },
       backgroundImage: theme => ({
+        'default': "url('/src/assets/netflix.jpg')",
         'badboys': "url('/src/assets/badboys.jpg')",
         'nobody': "url('/src/assets/nobody.jpg')",
         'coming2america': "url('/src/assets/coming2america.jpg')",
         'loki': "url('/src/assets/loki.jpg')",
         'falcon': "url('/src/assets/falcon.jpg')",
-        'jack': "url('/src/assets/jack.png')",
+        'jack': "url('/src/assets/jack.jpg')",
       })
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio')
+  ],
 }
