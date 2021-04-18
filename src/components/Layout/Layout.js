@@ -6,7 +6,7 @@ import Sidenav from '../Sidenav/Sidenav'
 export const Layout = ({children}, ...otherprops) => {
   const [menuToggle, setMenuToggle] = useState(false)
   return (
-    <div className='w-full h-full flex justify-start items-center rounded-3xl bg-black bg-opacity-40 overflow-hidden'
+    <div className='w-full h-full flex justify-start items-center rounded-3xl bg-black bg-opacity-60 bg-blur overflow-hidden'
       {...otherprops}
     >
       <div className={clsx('h-full w-[5%]')}>

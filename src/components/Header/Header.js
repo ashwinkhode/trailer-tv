@@ -1,4 +1,5 @@
 import {CgProfile, CgBell} from 'react-icons/cg'
+import {Link} from 'react-router-dom'
 import Searchbar from '../Searchbar/Searchbar'
 import MdiMovieOpenOutline from './MdiMovieOpenOutline'
 
@@ -20,12 +21,15 @@ const Header = () => {
         <Searchbar />
       </div>
       <div className='flex flex-row space-x-6'>
-        <div>
+        <div className='group hover:bg-gray-50 hover:text-gray-900 rounded-full p-1 cursor-pointer hover:shadow-thumbnailCard'>
           <CgBell className='w-6 h-6' />
         </div>
-        <div>
-          <CgProfile className='h-6 w-6' />
-        </div>
+        <Link
+          to='/login'>
+          <div className='group hover:bg-gray-50 hover:text-gray-900 rounded-full p-1 cursor-pointer hover:shadow-thumbnailCard'>
+            <CgProfile className='h-6 w-6' />
+          </div>
+        </Link>
       </div>
     </div>
   )
