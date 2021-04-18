@@ -1,10 +1,12 @@
 import {BsCollectionPlay} from 'react-icons/bs'
 import {BiHomeAlt, BiMenu} from 'react-icons/bi'
+import {MdMovieFilter} from 'react-icons/md'
 import {HiFire, HiOutlineSave} from 'react-icons/hi'
 import Home from '../pages/Home';
 import Trending from '../pages/Trending';
 import MyPlaylists from '../pages/MyPlaylists';
 import WatchLater from '../pages/WatchLater';
+import WatchVideo from '../pages/WatchVideo';
 
 export const sidenavRoutes = [
   {
@@ -30,5 +32,11 @@ export const sidenavRoutes = [
     path: 'saved',
     element: <WatchLater />,
     icon: HiOutlineSave
+  },
+  {
+    name: "Trailer of the Day",
+    path: 'watch',
+    element: <WatchVideo />,
+    icon: MdMovieFilter
   },
 ]

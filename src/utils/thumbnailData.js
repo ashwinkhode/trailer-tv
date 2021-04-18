@@ -3,7 +3,7 @@ export const recommendedData = [
     title: 'Your Name - Official Trailer',
     channel: 'Funanimation',
     thumbnailURL: '../assets/trailer1.jpg',
-    viewsCount: 6.2,
+    viewsCount: 62,
     uploadDuration: '4 months',
   },
   {
