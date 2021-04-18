@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import {useState} from 'react';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useLocation} from 'react-router-dom'
+import Login from './components/AuthForm/Login';
+import SignUp from './components/AuthForm/SignUp';
 import {Layout} from './components/Layout/Layout';
 import SmartCompressedImage from './components/SmartCompressedImage/SmartCompressedImage'
 import {useHome} from './context/HomeContext';
@@ -10,13 +12,22 @@ import {trendingData} from './utils/thumbnailData';
 
 export default function App() {
   const background = useHome()
+  const router = useLocation()
 
   return (
     <div
-      className={clsx(background.bg, 'w-full h-full bg-cover lg:p-12')}
+      className={clsx(router.pathname === '/' ? background.bg : 'bg-default', 'w-full h-full bg-cover lg:p-12')}
     >
       <Layout>
         <Routes>
+          <Route
+            path='login'
+            element={<Login />}
+          />
+          <Route
+            path='signup'
+            element={<SignUp />}
+          />
           {
             sidenavRoutes.map(
               route => (

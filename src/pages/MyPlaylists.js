@@ -4,6 +4,24 @@ import ThumbnailGrid from '../components/ThumbnailGrid/ThumbnailGrid'
 
 import {latestData, popularData, recommendedData, trendingData} from '../utils/thumbnailData'
 
+const PLAYLISTS = [
+  {
+    title: 'Must Watch Trailers of 2021',
+    channel: 'Omkar Kulkarni',
+    thumbnailURL: '../../assets/trailer1.jpg',
+  },
+  {
+    title: 'DC Trailers',
+    channel: 'Sushil Buragute',
+    thumbnailURL: '../../assets/trailer4.jpg',
+  },
+  {
+    title: 'Marvel Entertainment Trailers',
+    channel: 'Melvin Fernando',
+    thumbnailURL: '../../assets/trailer5.jpg',
+  },
+]
+
 const MyPlaylists = () => {
   return (
     <div className='w-full flex flex-col justify-between space-y-4 h-5/6 py-6 px-10 '>
@@ -16,7 +34,7 @@ const MyPlaylists = () => {
           My Playlists
         </h1>
         <div
-          className='flex flex-row justify-end items-center lg:mr-6'>
+          className='hidden flex-row justify-end items-center lg:mr-6'>
           <button className='flex flex-row justify-center items-center gap-2'>
             Explore
               <BsArrowRight />
@@ -26,7 +44,8 @@ const MyPlaylists = () => {
       </div>
       <div className='w-full h-full overflow-y-scroll scrollbars disable-scrollbars'>
         <ThumbnailGrid
-          thumbnailArray={[...recommendedData, ...popularData, ...trendingData, ...latestData]}
+          variant='playlist'
+          thumbnailArray={PLAYLISTS}
         />
 
       </div>

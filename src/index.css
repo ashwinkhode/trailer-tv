@@ -8,6 +8,11 @@ body {
   @apply w-screen h-screen bg-gray-900 antialiased text-gray-100 font-block;
 }
 
+.bg-blur {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
 /* For Chrome */
 .disable-scrollbars::-webkit-scrollbar {
     width: 8px;

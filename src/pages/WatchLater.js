@@ -16,7 +16,7 @@ const WatchLater = () => {
           Watch Later
         </h1>
         <div
-          className='flex flex-row justify-end items-center mr-6'>
+          className='hidden  flex-row justify-end items-center mr-6'>
           <button className='flex flex-row justify-center items-center gap-2'>
             Explore
               <BsArrowRight />
