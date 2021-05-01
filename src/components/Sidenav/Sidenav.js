@@ -4,11 +4,12 @@ import {sidenavRoutes} from '../../utils/router'
 
 export default function Sidenav({menuToggle, setMenuToggle}) {
 
+  // TODO: fix responsive bug issue
   return (
     <div className='relative h-full flex flex-col items-start bg-[#181818] '>
       <div
         onClick={() => setMenuToggle(!menuToggle)}
-        className='w-full hover:bg-[#252525] cursor-pointer'>
+        className='w-full hover:bg-[#252525] cursor-pointer overflow-hidden'>
         <li
           className='m-6 w-full list-none'
           aria-label='Menu'
@@ -23,10 +24,10 @@ export default function Sidenav({menuToggle, setMenuToggle}) {
             <Link
               key={link.name}
               to={link.path}
-              className='w-full hover:bg-[#252525] cursor-pointer'
+              className='w-full hover:bg-[#252525] cursor-pointer overflow-hidden'
             >
               <li
-                className='m-6 w-full  list-none'
+                className='m-6 w-full list-none'
                 aria-label={link.name}
               >
                 <link.icon className='w-1/3 h-full' />
