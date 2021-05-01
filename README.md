@@ -19,21 +19,25 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Still Under Development
 
--   [x] Homepage UI
--   [x] Trending UI
--   [x] Sidenav Routing
--   [x] Mock Data Collected
--   [-] Create ui components
--   [-] My Playlists Page
--   [-] Watch Later Page
--   [-] User/Auth Page
--   [-] Add Authentication & Backend
--   [-] Polish UI
-
+- [x] Homepage UI
+- [x] Trending UI
+- [x] Sidenav Routing
+- [x] Mock Data Collected
+- [x] My Playlists Page
+- [x] Watch Later Page
+- [x] User/Auth Page
+- [x] Create ui components
+- [-] Add Authentication & Backend
+- [-] State Management
+- [-] Polish UI
 
 - ⭐ - Star, if you like it
 - 👁 - Watch, get latest updates
-To report a bug, please raise an issue. Thank you!
+  To report a bug, please raise an issue. Thank you!
+
+## Known Issues
+
+- Side Navbar not responsive
 
 ## License
 
