@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import clsx from 'clsx'
 import {BsArrowRight} from 'react-icons/bs'
 import ThumbnailCard from '../ThumbnailCard/ThumbnailCard'
@@ -26,16 +27,20 @@ const ThumbnailFlex = ({heading, thumbnailArray, variant = 'row'}) => {
         {
           thumbnailArray.map(
             ({
-              title, channel, viewsCount, uploadDuration, thumbnailURL
+              id, title, channel, viewsCount, uploadDuration, thumbnailURL
             }) => (
-              <ThumbnailCard
-                key={title}
-                title={title}
-                channel={channel}
-                thumbnailURL={thumbnailURL}
-                viewsCount={viewsCount}
-                uploadDuration={uploadDuration}
-              />
+              <Link
+                to={`/watch/${id}`}
+                key={id}
+              >
+                <ThumbnailCard
+                  title={title}
+                  channel={channel}
+                  thumbnailURL={thumbnailURL}
+                  viewsCount={viewsCount}
+                  uploadDuration={uploadDuration}
+                />
+              </Link>
             )
           )
         }

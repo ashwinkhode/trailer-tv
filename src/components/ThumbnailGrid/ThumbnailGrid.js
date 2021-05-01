@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import PlaylistCard from '../PlaylistCard/PlaylistCard'
 import ThumbnailCard from '../ThumbnailCard/ThumbnailCard'
 
@@ -8,7 +9,7 @@ const ThumbnailGrid = ({thumbnailArray, variant = 'video'}) => {
       {
         thumbnailArray.map(
           ({
-            title, channel, viewsCount, uploadDuration, thumbnailURL
+            id, title, channel, viewsCount, uploadDuration, thumbnailURL
           }) => (
             <div
               key={title}
@@ -16,14 +17,17 @@ const ThumbnailGrid = ({thumbnailArray, variant = 'video'}) => {
               {
                 variant === 'video'
                   ? (
-                    <ThumbnailCard
-                      key={title}
-                      title={title}
-                      channel={channel}
-                      thumbnailURL={thumbnailURL}
-                      viewsCount={viewsCount}
-                      uploadDuration={uploadDuration}
-                    />
+                    <Link
+                      to={`/watch/${id}`}
+                    >
+                      <ThumbnailCard
+                        title={title}
+                        channel={channel}
+                        thumbnailURL={thumbnailURL}
+                        viewsCount={viewsCount}
+                        uploadDuration={uploadDuration}
+                      />
+                    </Link>
                   ) : (
                     <PlaylistCard
                       key={title}
@@ -34,7 +38,6 @@ const ThumbnailGrid = ({thumbnailArray, variant = 'video'}) => {
                   )
               }
             </div>
-
           )
         )
       }

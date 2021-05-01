@@ -6,7 +6,8 @@ import SignUp from './components/AuthForm/SignUp';
 import {Layout} from './components/Layout/Layout';
 import SmartCompressedImage from './components/SmartCompressedImage/SmartCompressedImage'
 import {useHome} from './context/HomeContext';
-import {sidenavRoutes} from './utils/router'
+import WatchVideo from './pages/WatchVideo';
+import {AppRoutes} from './utils/router'
 import {trendingData} from './utils/thumbnailData';
 
 
@@ -28,8 +29,12 @@ export default function App() {
             path='signup'
             element={<SignUp />}
           />
+          <Route
+            path='watch/:id'
+            element={<WatchVideo />}
+          />
           {
-            sidenavRoutes.map(
+            AppRoutes.map(
               route => (
                 <Route
                   key={route.name}
