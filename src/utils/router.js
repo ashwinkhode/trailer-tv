@@ -35,8 +35,35 @@ export const sidenavRoutes = [
   },
   {
     name: "Trailer of the Day",
-    path: 'watch',
+    path: 'watch/totd',
     element: <WatchVideo />,
     icon: MdMovieFilter
+  },
+]
+
+export const AppRoutes = [
+  {
+    name: 'Home',
+    path: '/',
+    element: <Home />,
+    icon: BiHomeAlt
+  },
+  {
+    name: 'Trending',
+    path: 'trending',
+    element: <Trending />,
+    icon: HiFire
+  },
+  {
+    name: 'My Playlists',
+    path: 'playlists',
+    element: <MyPlaylists />,
+    icon: BsCollectionPlay
+  },
+  {
+    name: 'Watch Later',
+    path: 'saved',
+    element: <WatchLater />,
+    icon: HiOutlineSave
   },
 ]

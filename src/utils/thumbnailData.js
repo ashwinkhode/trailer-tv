@@ -1,5 +1,6 @@
 export const recommendedData = [
   {
+    id: 'xU47nhruN-Q',
     title: 'Your Name - Official Trailer',
     channel: 'Funanimation',
     thumbnailURL: '../assets/trailer1.jpg',
@@ -7,6 +8,7 @@ export const recommendedData = [
     uploadDuration: '4 months',
   },
   {
+    id: 'L9MQLhV2u2E',
     title: 'Demon Slayer - The Movie: Mugen Train Official Trailer',
     channel: 'Funiplex USA',
     thumbnailURL: '../assets/trailer2.jpg',
@@ -14,6 +16,7 @@ export const recommendedData = [
     uploadDuration: '3 months',
   },
   {
+    id: 'FUK2kdPsBws',
     title: 'F9: Fast & Furious 9 - Official Trailer',
     channel: 'IGN',
     thumbnailURL: '../assets/trailer3.jpg',
@@ -21,6 +24,7 @@ export const recommendedData = [
     uploadDuration: '2 days',
   },
   {
+    id: '-FZ-pPFAjYY',
     title: 'The Batman - Official Trailer',
     channel: 'DC',
     thumbnailURL: '../assets/trailer4.jpg',
@@ -28,6 +32,7 @@ export const recommendedData = [
     uploadDuration: '1 month',
   },
   {
+    id: '6ZfuNTqbHE8',
     title: 'Avengers - Infinity Wars | Official Trailer',
     channel: 'Marvel Entertainment',
     thumbnailURL: '../assets/trailer5.jpg',
@@ -207,3 +212,5 @@ export const popularData = [{
   thumbnailURL: "https://i.ytimg.com/vi_webp/lEBPNi4bEbc/maxresdefault.webp",
   uploadDuration: '4 months'
 }]
+
+export const allVideos = [...latestData, ...popularData, ...recommendedData, ...trendingData]
