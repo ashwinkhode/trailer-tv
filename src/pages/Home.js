@@ -40,21 +40,24 @@ const Home = () => {
           {
             trendingData.map(
               ({thumbnailURL, title, channel, description, id}) => (
-                <img
+                <Link to={`watch/${id}`}
                   key={title}
-                  alt={title}
-                  src={SmartCompressedImage(thumbnailURL, '200')}
-                  width='200'
-                  className='rounded-md'
-                  onMouseEnter={() => {
-                    dispatchToHome({
-                      payload: {
-                        id,
-                      }
-                    })
-                  }
-                  }
-                />
+                >
+                  <img
+                    alt={title}
+                    src={SmartCompressedImage(thumbnailURL, '200')}
+                    width='200'
+                    className='rounded-md'
+                    onMouseEnter={() => {
+                      dispatchToHome({
+                        payload: {
+                          id,
+                        }
+                      })
+                    }
+                    }
+                  />
+                </Link>
               )
             )
           }
