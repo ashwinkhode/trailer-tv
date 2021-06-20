@@ -1,6 +1,6 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  mode: "jit",
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {
@@ -11,21 +11,20 @@ module.exports = {
       fontFamily: {
         block: ['Rubik', 'Montserrat', 'Roboto'],
       },
-      backgroundImage: theme => ({
-        'default': "url('/src/assets/netflix.jpg')",
-        'badboys': "url('/src/assets/badboys.jpg')",
-        'nobody': "url('/src/assets/nobody.jpg')",
-        'coming2america': "url('/src/assets/coming2america.jpg')",
-        'loki': "url('/src/assets/loki.jpg')",
-        'falcon': "url('/src/assets/falcon.jpg')",
-        'jack': "url('/src/assets/jack.jpg')",
-      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      backgroundImage: (theme) => ({
+        default: "url('/public/assets/netflix.jpg')",
+        badboys: "url('/public/assets/badboys.jpg')",
+        nobody: "url('/public/assets/nobody.jpg')",
+        coming2america: "url('/public/assets/coming2america.jpg')",
+        loki: "url('/public/assets/loki.jpg')",
+        falcon: "url('/public/assets/falcon.jpg')",
+        jack: "url('/public/assets/jack.jpg')",
+      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio')
-  ],
-}
+  plugins: [require('@tailwindcss/aspect-ratio')],
+};
