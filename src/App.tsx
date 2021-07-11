@@ -24,7 +24,11 @@ export default function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="watch/:id" element={<WatchVideo />} />
           {AppRoutes.map((route) => (
-            <Route key={route.name} path={route.path} element={route.element} />
+            <Route
+              key={route.name}
+              path={route.path}
+              element={route.element()}
+            />
           ))}
         </Routes>
       </Layout>

@@ -1,9 +1,9 @@
 import { BsArrowRight } from 'react-icons/bs';
 import SmartCompressedImage from '../components/SmartCompressedImage/SmartCompressedImage';
-import { trendingData } from '../utils/thumbnailData';
 import { useHome, useHomeDispatch } from '../context/HomeContext';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
+import { trendingData } from '~/utils/thumbnailData';
 
 const Home = () => {
   const { channel, title, description } = useHome();
@@ -30,7 +30,7 @@ const Home = () => {
           Trending Trailers
         </h1>
         <div className="w-full flex flex-row space-x-6">
-          {trendingData.map(({ thumbnailURL, title, id }) => (
+          {trendingData.map(({ thumbnailURL, title, id }: any) => (
             <Link to={`watch/${id}`} key={title}>
               <img
                 alt={title}
