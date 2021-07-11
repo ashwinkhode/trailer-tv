@@ -1,0 +1,16 @@
+mutation LOGIN($email: String!, $password: String!) {
+  login(userInput: { email: $email, password: $password }) {
+    user {
+      userId
+      createdAt
+      email
+      playlists {
+        playlistName
+      }
+    }
+    errors {
+      field
+      message
+    }
+  }
+}
