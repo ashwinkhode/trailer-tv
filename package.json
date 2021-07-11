@@ -12,14 +12,18 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.21",
     "clsx": "^1.1.1",
+    "graphql": "^15.5.1",
     "history": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.10.1",
     "react-icons": "^4.2.0",
     "react-router-dom": "^6.0.0-beta.0"
   },
@@ -38,6 +42,10 @@
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@graphql-codegen/cli": "1.21.6",
+    "@graphql-codegen/typescript": "1.22.4",
+    "@graphql-codegen/typescript-operations": "1.18.3",
+    "@graphql-codegen/typescript-react-apollo": "^2.3.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@svgr/webpack": "^5.5.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
