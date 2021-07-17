@@ -6,6 +6,9 @@ export type VideoMetadata = {
   viewsCount?: number;
   uploadDuration?: string;
   description?: string;
+  duration?: number;
+  likes?: number;
+  dislikes?: number;
 };
 
 export const recommendedData: VideoMetadata[] = [
