@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
 import { sidenavRoutes } from '../../utils/router';
 
 type sidenavPropsType = {
-  menuToggle: boolean;
-  setMenuToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  menuToggle?: boolean;
+  setMenuToggle?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Sidenav({
@@ -13,10 +13,10 @@ export default function Sidenav({
 }: sidenavPropsType) {
   // TODO: fix responsive bug issue
   return (
-    <div className="relative h-full flex flex-col items-start bg-[#181818] ">
+    <div className="relative w-full lg:h-full flex justify-center items-center lg:flex-col lg:justify-start lg:items-start bg-[#181818] ">
       <div
-        onClick={() => setMenuToggle(!menuToggle)}
-        className="w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
+        onClick={() => (setMenuToggle ? setMenuToggle(!menuToggle) : undefined)}
+        className="hidden lg:block w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
       >
         <li className="m-6 w-full list-none" aria-label="Menu">
           <BiMenu className="w-1/3 h-full" />
@@ -26,19 +26,22 @@ export default function Sidenav({
         <Link
           key={link.name}
           to={link.path}
-          className="w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
+          className="w-1/5 lg:w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
         >
-          <li className="m-6 w-full list-none" aria-label={link.name}>
-            <link.icon className="w-1/3 h-full" />
+          <li className="my-4 lg:m-6 w-full list-none" aria-label={link.name}>
+            <link.icon className="mx-auto lg:mx-0 w-1/3 h-full" />
           </li>
         </Link>
       ))}
-      {menuToggle ? (
-        <div className="absolute w-[250%] h-full flex flex-col items-start bg-[#181818] z-10 shadow-sidenav">
+      {/* Only renders on large displays */}
+      {menuToggle && (
+        <div className="hidden absolute w-[250%] h-full lg:flex flex-col items-start bg-[#181818] z-10 shadow-sidenav">
           <li
             className="p-6 w-full flex flex-row justify-start items-center gap-x-2 hover:bg-[#252525] cursor-pointer list-none"
             aria-label="Menu"
-            onClick={() => setMenuToggle(!menuToggle)}
+            onClick={() =>
+              setMenuToggle ? setMenuToggle(!menuToggle) : undefined
+            }
           >
             <BiMenu className="w-6 h-6" />
             Menu
@@ -55,7 +58,7 @@ export default function Sidenav({
             </Link>
           ))}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

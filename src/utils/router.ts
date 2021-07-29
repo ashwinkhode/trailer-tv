@@ -1,5 +1,5 @@
 import { BsCollectionPlay } from 'react-icons/bs';
-import { BiHomeAlt, BiMenu } from 'react-icons/bi';
+import { BiHomeAlt } from 'react-icons/bi';
 import { MdMovieFilter } from 'react-icons/md';
 import { HiFire, HiOutlineSave } from 'react-icons/hi';
 import Home from '../pages/Home';

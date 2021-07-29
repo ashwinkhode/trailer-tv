@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  @apply w-screen h-screen bg-gray-900 antialiased text-gray-100 font-block;
+  @apply w-screen min-h-screen bg-gray-900 antialiased text-gray-100 font-block;
 }
 
 .bg-blur {
@@ -15,9 +19,10 @@ body {
 
 /* For Chrome */
 .disable-scrollbars::-webkit-scrollbar {
-    width: 8px;
-    height: 100%;
-    background: transparent; /* Chrome/Safari/Webkit */
+  height: 100%;
+  background: transparent; /* Chrome/Safari/Webkit */
+
+  @apply w-0 lg:w-2;
 }
 
 .disable-scrollbars::-webkit-scrollbar-thumb {
@@ -40,7 +45,7 @@ body {
 }
 
 #root {
-  @apply w-screen h-screen
+  @apply w-screen h-screen;
 }
 
 .search-btn {
@@ -51,4 +56,3 @@ body {
 .search-input {
   clip-path: polygon(0% 0%, 100% 0, 93% 50%, 100% 100%, 0% 100%);
 }
-
