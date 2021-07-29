@@ -22,7 +22,7 @@ const PLAYLISTS = [
 
 const MyPlaylists = () => {
   return (
-    <div className="w-full flex flex-col justify-between space-y-4 h-5/6 px-4 lg:py-6 lg:px-10 ">
+    <div className="w-full flex flex-col justify-between lg:justify-start space-y-4 h-5/6 px-4 lg:py-6 lg:px-10 lg:mt-8">
       <SEO title="Playlists - TrailerTV | A Platform for Trailers" />
       <div className="w-full flex flex-row justify-between">
         <h1 className="font-semibold lg:font-bold text-lg lg:text-2xl">
