@@ -24,7 +24,7 @@ const ThumbnailFlex = ({
           className={clsx(
             variant === 'column'
               ? '!flex-col lg:space-y-4 !overflow-x-hidden space-y-4'
-              : 'lg:flex-row lg:-mx-2 lg:space-x-4',
+              : 'lg:flex-row lg:-mx-0 lg:space-x-4',
             'max-w-[100vw] w-screen flex-row flex-1 lg:w-full flex overflow-x-auto lg:overflow-x-hidden'
           )}
         >
@@ -37,7 +37,7 @@ const ThumbnailFlex = ({
               uploadDuration,
               thumbnailURL,
             }) => (
-              <div className="min-w-[89%] mr-8" key={id}>
+              <div className="min-w-[89%] mr-8 lg:min-w-min lg:mr-0" key={id}>
                 <Link to={`/watch/${id}`}>
                   <ThumbnailCard
                     title={title}

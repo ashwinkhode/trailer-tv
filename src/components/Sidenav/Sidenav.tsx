@@ -29,7 +29,7 @@ export default function Sidenav({
           className="w-1/5 lg:w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
         >
           <li className="my-4 lg:m-6 w-full list-none" aria-label={link.name}>
-            <link.icon className="mx-auto w-1/3 h-full" />
+            <link.icon className="mx-auto lg:mx-0 w-1/3 h-full" />
           </li>
         </Link>
       ))}
