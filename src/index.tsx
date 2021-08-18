@@ -6,7 +6,7 @@ import { HomeContextProvider } from './context/HomeContext';
 import './index.css';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
   credentials: 'include',
 });
