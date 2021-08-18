@@ -11,6 +11,8 @@ const client = new ApolloClient({
   credentials: 'include',
 });
 
+console.log('Graphql Endpoint', process.env.GRAPHQL_ENDPOINT);
+
 ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
