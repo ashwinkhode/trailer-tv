@@ -77,8 +77,8 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
         </div>
       </div>
 
-      <div className="max-w-[100vw] overflow-x-hidden overflow-y-auto h-full lg:w-[30%] my-4 flex lg:justify-end border-t-2 lg:border-t-0 lg:border-l-2 border-gray-300 lg:!overflow-y-scroll disable-scrollbars scrollbars">
-        <div className="lg:w-11/12 mt-4 lg:px-4 flex flex-col ">
+      <div className="max-w-[100vw] overflow-x-hidden overflow-y-auto h-full lg:w-[30%] my-4 lg:my-0 flex lg:justify-end border-t-2 lg:border-t-0 lg:border-l-2 border-gray-300 lg:!overflow-y-scroll disable-scrollbars scrollbars">
+        <div className="lg:w-11/12 mt-4 lg:mt-0 lg:px-4 flex flex-col ">
           <h1 className="font-semibold text-lg lg:text-2xl">Related Videos</h1>
           <ThumbnailFlex
             heading=""

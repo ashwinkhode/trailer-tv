@@ -7,7 +7,7 @@ export const Layout = ({ children }: any, ...otherprops: any[]) => {
   const [menuToggle, setMenuToggle] = useState(false);
   return (
     <div
-      className="relative max-w-[1280px] w-full h-full  lg:flex-row lg:justify-between lg:mx-auto lg:rounded-3xl bg-black bg-opacity-60 bg-blur overflow-hidden"
+      className="relative max-w-[1280px] w-full h-full  lg:flex-row lg:justify-between lg:mx-auto lg:rounded-3xl bg-black bg-opacity-75 bg-blur overflow-hidden"
       {...otherprops}
     >
       <div

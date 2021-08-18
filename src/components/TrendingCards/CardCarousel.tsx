@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { BsCaretLeftFill, BsCaretRightFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useHomeDispatch } from '~/context/HomeContext';
 import { trendingData } from '~/utils/thumbnailData';
 import SmartCompressedImage from '../SmartCompressedImage/SmartCompressedImage';
 
 export default function CardCarousel() {
+  const navigate = useNavigate();
+  const dispatchToHome = useHomeDispatch();
   const [currentVideoId, setVideoId] = useState('sY8gUtyeAKE');
   const currentIndex = trendingData.findIndex(
     ({ id }) => id === currentVideoId
@@ -22,18 +25,26 @@ export default function CardCarousel() {
         >
           <BsCaretLeftFill className="w-6 h-6  drop-shadow-sm" />
         </button>
-        <Link to={`watch/${currentVideoId}`}>
-          <img
-            alt={title}
-            src={
-              thumbnailURL
-                ? SmartCompressedImage(thumbnailURL, '200')
-                : undefined
+        <img
+          alt={title}
+          src={
+            thumbnailURL ? SmartCompressedImage(thumbnailURL, '200') : undefined
+          }
+          width="200"
+          className="mx-auto rounded-md w-full cursor-pointer"
+          onClick={async () => {
+            if (dispatchToHome) {
+              dispatchToHome({
+                payload: {
+                  currentVideoId,
+                },
+              });
             }
-            width="200"
-            className="mx-auto rounded-md w-full"
-          />
-        </Link>
+            navigate(`watch/${currentVideoId}`, {
+              replace: false,
+            });
+          }}
+        />
         <button
           className="absolute flex justify-center items-center top-0 right-0 text-gray-50 h-5/6 bg-transparent p-1.5 rounded-full focus:outline-none"
           onClick={() => {
