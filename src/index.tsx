@@ -11,7 +11,7 @@ import { HomeContextProvider } from './context/HomeContext';
 import './index.css';
 
 const link = createHttpLink({
-  uri: process.env.GRAPHQL_ENDPOINT,
+  uri: 'https://trailer-tv-server.herokuapp.com/graphql',
   credentials: 'include',
 });
 
