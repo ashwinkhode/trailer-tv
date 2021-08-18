@@ -7,6 +7,10 @@ import Trending from '../pages/Trending';
 import MyPlaylists from '../pages/MyPlaylists';
 import WatchLater from '../pages/WatchLater';
 import WatchVideo from '../pages/WatchVideo';
+import Login from '~/components/AuthForm/Login';
+import SignUp from '~/components/AuthForm/SignUp';
+import Playlist from '~/pages/Playlist';
+import UserProfile from '~/pages/UserProfile';
 
 export const sidenavRoutes = [
   {
@@ -65,5 +69,20 @@ export const AppRoutes = [
     path: 'saved',
     element: WatchLater,
     icon: HiOutlineSave,
+  },
+  {
+    name: 'Login',
+    path: 'login',
+    element: Login,
+  },
+  {
+    name: 'Sign Up',
+    path: 'signup',
+    element: SignUp,
+  },
+  {
+    name: 'Watch Video',
+    path: 'watch/:id',
+    element: WatchVideo,
   },
 ];

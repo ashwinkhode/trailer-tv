@@ -1,11 +1,9 @@
 import clsx from 'clsx';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Login from './components/AuthForm/Login';
-import SignUp from './components/AuthForm/SignUp';
 import { Layout } from './components/Layout/Layout';
 import { useHome } from './context/HomeContext';
 import Playlist from './pages/Playlist';
-import WatchVideo from './pages/WatchVideo';
+import UserProfile from './pages/UserProfile';
 import { AppRoutes } from './utils/router';
 
 export default function App() {
@@ -21,9 +19,7 @@ export default function App() {
     >
       <Layout>
         <Routes>
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="watch/:id" element={<WatchVideo />} />
+          <Route path="profile" element={<UserProfile />} />
           <Route path="playlist/:id" element={<Playlist />} />
           {AppRoutes.map((route) => (
             <Route

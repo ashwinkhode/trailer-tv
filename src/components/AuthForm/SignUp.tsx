@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import { useRegisterMutation } from '~/generated/graphql';
+import { useUser } from '~/context/UserContext';
 
 interface IFormInput {
   email: string;
@@ -11,6 +12,7 @@ interface IFormInput {
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const {
     register,
@@ -37,6 +39,12 @@ const SignUp = () => {
       });
 
       if (response.data?.register.user) {
+        if (setUser) {
+          setUser({
+            userID: response.data.register.user.userId,
+            email: response.data.register.user.email,
+          });
+        }
         navigate('/', {
           replace: true,
         });

@@ -20,7 +20,7 @@ const Header = () => {
         {/* <div className="group hover:bg-gray-50 hover:text-gray-900 rounded-full p-1 cursor-pointer hover:shadow-thumbnailCard">
           <CgBell className="w-6 h-6" />
         </div> */}
-        <Link to="/login">
+        <Link to="/profile">
           <div className="group hover:bg-gray-50 hover:text-gray-900 rounded-full p-1 cursor-pointer hover:shadow-thumbnailCard">
             <CgProfile className="h-6 w-6" />
           </div>
