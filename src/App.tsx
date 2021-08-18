@@ -15,9 +15,7 @@ export default function App() {
   return (
     <div
       className={clsx(
-        router.pathname === '/'
-          ? `bg-default lg:${background.bg}!`
-          : 'bg-default',
+        router.pathname === '/' ? `${background.bg}` : 'bg-default',
         'w-full h-full bg-center bg-no-repeat bg-cover lg:p-12'
       )}
     >
