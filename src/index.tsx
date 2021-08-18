@@ -1,14 +1,23 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client';
 import App from './App';
 import { HomeContextProvider } from './context/HomeContext';
 import './index.css';
 
-const client = new ApolloClient({
+const link = createHttpLink({
   uri: process.env.GRAPHQL_ENDPOINT,
-  cache: new InMemoryCache(),
   credentials: 'include',
+});
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link,
 });
 
 console.log('Graphql Endpoint', process.env.GRAPHQL_ENDPOINT);
