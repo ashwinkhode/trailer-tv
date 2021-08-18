@@ -44,21 +44,15 @@ const SignUp = () => {
     }
   };
 
-  console.log(formFieldError);
-
   return (
-    <div className="w-full h-full flex flex-row justify-center items-center mb-8">
-      <div className="w-1/2 h-1/2 flex flex-col justify-center items-center space-y-4 border-r-2 border-gray-300">
+    <div className="w-full lg:h-full h-5/6 flex flex-col lg:flex-row justify-center items-center mb-8">
+      <div className="lg:w-1/2 lg:h-1/2 flex flex-col justify-center items-center space-y-4 lg:border-r-2 lg:border-gray-300">
         <h1 className="font-bold text-6xl">Sign Up</h1>
-        <p className="w-2/3 text-center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam
-          totam porro autem sunt quisquam!
-        </p>
       </div>
-      <div className="w-1/2 h-full flex flex-col justify-center items-center">
-        <div className="w-2/3 m-8 mx-auto flex flex-col justify-center space-y-4">
+      <div className="lg:w-1/2 lg:h-full flex flex-col justify-center items-center">
+        <div className="lg:w-2/3 m-8 lg:mx-auto flex flex-col justify-center space-y-4">
           <form
-            className="relative flex flex-col justify-center space-y-2"
+            className="relative flex flex-col justify-center space-y-4"
             onSubmit={handleSubmit(onSubmit)}
           >
             {data?.register.errors &&
