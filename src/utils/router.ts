@@ -11,6 +11,7 @@ import Login from '~/components/AuthForm/Login';
 import SignUp from '~/components/AuthForm/SignUp';
 import Playlist from '~/pages/Playlist';
 import UserProfile from '~/pages/UserProfile';
+import NewPlaylist from '~/pages/NewPlaylist';
 
 export const sidenavRoutes = [
   {
@@ -63,6 +64,11 @@ export const AppRoutes = [
     path: 'playlists',
     element: MyPlaylists,
     icon: BsCollectionPlay,
+  },
+  {
+    name: 'Create New Playlist',
+    path: 'new-playlist',
+    element: NewPlaylist,
   },
   {
     name: 'Watch Later',

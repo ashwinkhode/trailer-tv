@@ -11,7 +11,10 @@ import { HomeContextProvider } from './context/HomeContext';
 import './index.css';
 
 const link = createHttpLink({
-  uri: 'https://trailer-tv-server.herokuapp.com/graphql',
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? 'https://trailer-tv-server.herokuapp.com/graphql'
+      : 'http://localhost:4000/graphql',
   credentials: 'include',
 });
 
