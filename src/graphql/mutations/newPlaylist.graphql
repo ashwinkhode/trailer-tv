@@ -1,0 +1,7 @@
+mutation NewPlaylist($inputData: NewPlaylistInput!) {
+  newPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    createdAt
+  }
+}

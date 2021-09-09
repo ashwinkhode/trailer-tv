@@ -29,7 +29,7 @@ export type Mutation = {
   login: UserResponse;
   register: UserResponse;
   addVideo?: Maybe<Video>;
-  removeDelete?: Maybe<Video>;
+  removeVideo?: Maybe<Video>;
   seedVideos?: Maybe<Array<Video>>;
 };
 
@@ -69,7 +69,7 @@ export type MutationAddVideoArgs = {
 };
 
 
-export type MutationRemoveDeleteArgs = {
+export type MutationRemoveVideoArgs = {
   videoId: Scalars['String'];
 };
 
@@ -179,6 +179,19 @@ export type LoginMutation = (
   ) }
 );
 
+export type NewPlaylistMutationVariables = Exact<{
+  inputData: NewPlaylistInput;
+}>;
+
+
+export type NewPlaylistMutation = (
+  { __typename?: 'Mutation' }
+  & { newPlaylist: (
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistId' | 'playlistName' | 'createdAt'>
+  ) }
+);
+
 export type RegisterMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -208,6 +221,38 @@ export type MeQuery = (
     { __typename?: 'User' }
     & Pick<User, 'userId' | 'email'>
   )> }
+);
+
+export type My_PlaylistsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type My_PlaylistsQuery = (
+  { __typename?: 'Query' }
+  & { myPlaylists: Array<(
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistName' | 'playlistId' | 'createdAt'>
+    & { videos?: Maybe<Array<(
+      { __typename?: 'Video' }
+      & Pick<Video, 'videoId'>
+    )>> }
+  )> }
+);
+
+export type PlaylistQueryVariables = Exact<{
+  playlistId: Scalars['String'];
+}>;
+
+
+export type PlaylistQuery = (
+  { __typename?: 'Query' }
+  & { playlist: (
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistId' | 'playlistName' | 'createdAt'>
+    & { videos?: Maybe<Array<(
+      { __typename?: 'Video' }
+      & Pick<Video, 'videoId' | 'title' | 'uploadedAt' | 'channel' | 'thumbnail_url' | 'views'>
+    )>> }
+  ) }
 );
 
 
@@ -256,6 +301,41 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const NewPlaylistDocument = gql`
+    mutation NewPlaylist($inputData: NewPlaylistInput!) {
+  newPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    createdAt
+  }
+}
+    `;
+export type NewPlaylistMutationFn = Apollo.MutationFunction<NewPlaylistMutation, NewPlaylistMutationVariables>;
+
+/**
+ * __useNewPlaylistMutation__
+ *
+ * To run a mutation, you first call `useNewPlaylistMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useNewPlaylistMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [newPlaylistMutation, { data, loading, error }] = useNewPlaylistMutation({
+ *   variables: {
+ *      inputData: // value for 'inputData'
+ *   },
+ * });
+ */
+export function useNewPlaylistMutation(baseOptions?: Apollo.MutationHookOptions<NewPlaylistMutation, NewPlaylistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<NewPlaylistMutation, NewPlaylistMutationVariables>(NewPlaylistDocument, options);
+      }
+export type NewPlaylistMutationHookResult = ReturnType<typeof useNewPlaylistMutation>;
+export type NewPlaylistMutationResult = Apollo.MutationResult<NewPlaylistMutation>;
+export type NewPlaylistMutationOptions = Apollo.BaseMutationOptions<NewPlaylistMutation, NewPlaylistMutationVariables>;
 export const RegisterDocument = gql`
     mutation REGISTER($email: String!, $password: String!) {
   register(userInput: {email: $email, password: $password}) {
@@ -333,3 +413,87 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export const My_PlaylistsDocument = gql`
+    query MY_PLAYLISTS {
+  myPlaylists {
+    playlistName
+    playlistId
+    videos {
+      videoId
+    }
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useMy_PlaylistsQuery__
+ *
+ * To run a query within a React component, call `useMy_PlaylistsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMy_PlaylistsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMy_PlaylistsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMy_PlaylistsQuery(baseOptions?: Apollo.QueryHookOptions<My_PlaylistsQuery, My_PlaylistsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<My_PlaylistsQuery, My_PlaylistsQueryVariables>(My_PlaylistsDocument, options);
+      }
+export function useMy_PlaylistsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<My_PlaylistsQuery, My_PlaylistsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<My_PlaylistsQuery, My_PlaylistsQueryVariables>(My_PlaylistsDocument, options);
+        }
+export type My_PlaylistsQueryHookResult = ReturnType<typeof useMy_PlaylistsQuery>;
+export type My_PlaylistsLazyQueryHookResult = ReturnType<typeof useMy_PlaylistsLazyQuery>;
+export type My_PlaylistsQueryResult = Apollo.QueryResult<My_PlaylistsQuery, My_PlaylistsQueryVariables>;
+export const PlaylistDocument = gql`
+    query PLAYLIST($playlistId: String!) {
+  playlist(playlistId: $playlistId) {
+    playlistId
+    playlistName
+    createdAt
+    videos {
+      videoId
+      title
+      uploadedAt
+      channel
+      thumbnail_url
+      views
+    }
+  }
+}
+    `;
+
+/**
+ * __usePlaylistQuery__
+ *
+ * To run a query within a React component, call `usePlaylistQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePlaylistQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePlaylistQuery({
+ *   variables: {
+ *      playlistId: // value for 'playlistId'
+ *   },
+ * });
+ */
+export function usePlaylistQuery(baseOptions: Apollo.QueryHookOptions<PlaylistQuery, PlaylistQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PlaylistQuery, PlaylistQueryVariables>(PlaylistDocument, options);
+      }
+export function usePlaylistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PlaylistQuery, PlaylistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PlaylistQuery, PlaylistQueryVariables>(PlaylistDocument, options);
+        }
+export type PlaylistQueryHookResult = ReturnType<typeof usePlaylistQuery>;
+export type PlaylistLazyQueryHookResult = ReturnType<typeof usePlaylistLazyQuery>;
+export type PlaylistQueryResult = Apollo.QueryResult<PlaylistQuery, PlaylistQueryVariables>;

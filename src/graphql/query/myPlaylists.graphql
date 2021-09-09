@@ -1,0 +1,10 @@
+query MY_PLAYLISTS {
+  myPlaylists {
+    playlistName
+    playlistId
+    videos {
+      videoId
+    }
+    createdAt
+  }
+}

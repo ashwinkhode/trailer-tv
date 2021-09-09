@@ -1,0 +1,15 @@
+query PLAYLIST($playlistId: String!) {
+  playlist(playlistId: $playlistId) {
+    playlistId
+    playlistName
+    createdAt
+    videos {
+      videoId
+      title
+      uploadedAt
+      channel
+      thumbnail_url
+      views
+    }
+  }
+}
