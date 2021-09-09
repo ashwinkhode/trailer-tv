@@ -17,7 +17,7 @@ const WatchLater = () => {
         <h1 className="font-semibold lg:font-bold text-lg lg:text-2xl">
           Watch Later
         </h1>
-        <div className="hidden  flex-row justify-end items-center mr-6">
+        <div className="hidden  flex-row justify-end items-center mr-2">
           <button className="flex flex-row justify-center items-center gap-2">
             Explore
             <BsArrowRight />

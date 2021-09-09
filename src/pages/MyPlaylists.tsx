@@ -1,24 +1,6 @@
-import { BsArrowRight } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import PlaylistGrid from '~/components/PlaylistGrid/PlaylistGrid';
 import SEO from '../components/SEO/SEO';
-import ThumbnailGrid from '../components/ThumbnailGrid/ThumbnailGrid';
-
-const PLAYLISTS = [
-  {
-    title: 'Must Watch Trailers of 2021',
-    channel: 'Omkar Kulkarni',
-    thumbnailURL: 'assets/trailer3.jpg',
-  },
-  {
-    title: 'DC Trailers',
-    channel: 'Sushil Buragute',
-    thumbnailURL: 'assets/trailer4.jpg',
-  },
-  {
-    title: 'Marvel Entertainment Trailers',
-    channel: 'Melvin Fernando',
-    thumbnailURL: 'assets/trailer5.jpg',
-  },
-];
 
 const MyPlaylists = () => {
   return (
@@ -28,15 +10,16 @@ const MyPlaylists = () => {
         <h1 className="font-semibold lg:font-bold text-lg lg:text-2xl">
           My Playlists
         </h1>
-        <div className="hidden flex-row justify-end items-center lg:mr-6">
-          <button className="flex flex-row justify-center items-center gap-2">
-            Explore
-            <BsArrowRight />
-          </button>
+        <div className="flex-row justify-end items-center lg:mr-2">
+          <Link to="/new-playlist">
+            <button className="flex flex-row justify-center items-center gap-2">
+              Create New Playlist +
+            </button>
+          </Link>
         </div>
       </div>
       <div className="overflow-y-auto lg:scrollbars disable-scrollbars">
-        <ThumbnailGrid variant="playlist" thumbnailArray={PLAYLISTS} />
+        <PlaylistGrid />
       </div>
     </div>
   );
