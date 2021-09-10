@@ -157,6 +157,23 @@ export type VideoInput = {
   category: Scalars['String'];
 };
 
+export type Add_Video_To_PlaylistMutationVariables = Exact<{
+  inputData: PlaylistOperationInput;
+}>;
+
+
+export type Add_Video_To_PlaylistMutation = (
+  { __typename?: 'Mutation' }
+  & { addVideoToPlaylist: (
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistId' | 'playlistName'>
+    & { videos?: Maybe<Array<(
+      { __typename?: 'Video' }
+      & Pick<Video, 'videoId' | 'title'>
+    )>> }
+  ) }
+);
+
 export type Delete_PlaylistMutationVariables = Exact<{
   playlistId: Scalars['String'];
 }>;
@@ -235,6 +252,23 @@ export type RegisterMutation = (
   ) }
 );
 
+export type Remove_Video_From_PlaylistMutationVariables = Exact<{
+  inputData: PlaylistOperationInput;
+}>;
+
+
+export type Remove_Video_From_PlaylistMutation = (
+  { __typename?: 'Mutation' }
+  & { removeVideoFromPlaylist: (
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistId' | 'playlistName'>
+    & { videos?: Maybe<Array<(
+      { __typename?: 'Video' }
+      & Pick<Video, 'videoId' | 'title'>
+    )>> }
+  ) }
+);
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -281,7 +315,69 @@ export type PlaylistQuery = (
   ) }
 );
 
+export type VideoQueryVariables = Exact<{
+  videoId: Scalars['String'];
+}>;
 
+
+export type VideoQuery = (
+  { __typename?: 'Query' }
+  & { video?: Maybe<(
+    { __typename?: 'Video' }
+    & Pick<Video, 'videoId' | 'title' | 'channel' | 'views' | 'thumbnail_url'>
+  )> }
+);
+
+export type VideosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type VideosQuery = (
+  { __typename?: 'Query' }
+  & { videos?: Maybe<Array<(
+    { __typename?: 'Video' }
+    & Pick<Video, 'videoId' | 'title' | 'category' | 'channel' | 'thumbnail_url' | 'views'>
+  )>> }
+);
+
+
+export const Add_Video_To_PlaylistDocument = gql`
+    mutation ADD_VIDEO_TO_PLAYLIST($inputData: PlaylistOperationInput!) {
+  addVideoToPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    videos {
+      videoId
+      title
+    }
+  }
+}
+    `;
+export type Add_Video_To_PlaylistMutationFn = Apollo.MutationFunction<Add_Video_To_PlaylistMutation, Add_Video_To_PlaylistMutationVariables>;
+
+/**
+ * __useAdd_Video_To_PlaylistMutation__
+ *
+ * To run a mutation, you first call `useAdd_Video_To_PlaylistMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAdd_Video_To_PlaylistMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addVideoToPlaylistMutation, { data, loading, error }] = useAdd_Video_To_PlaylistMutation({
+ *   variables: {
+ *      inputData: // value for 'inputData'
+ *   },
+ * });
+ */
+export function useAdd_Video_To_PlaylistMutation(baseOptions?: Apollo.MutationHookOptions<Add_Video_To_PlaylistMutation, Add_Video_To_PlaylistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Add_Video_To_PlaylistMutation, Add_Video_To_PlaylistMutationVariables>(Add_Video_To_PlaylistDocument, options);
+      }
+export type Add_Video_To_PlaylistMutationHookResult = ReturnType<typeof useAdd_Video_To_PlaylistMutation>;
+export type Add_Video_To_PlaylistMutationResult = Apollo.MutationResult<Add_Video_To_PlaylistMutation>;
+export type Add_Video_To_PlaylistMutationOptions = Apollo.BaseMutationOptions<Add_Video_To_PlaylistMutation, Add_Video_To_PlaylistMutationVariables>;
 export const Delete_PlaylistDocument = gql`
     mutation DELETE_PLAYLIST($playlistId: String!) {
   deletePlaylist(playlistId: $playlistId) {
@@ -467,6 +563,44 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const Remove_Video_From_PlaylistDocument = gql`
+    mutation REMOVE_VIDEO_FROM_PLAYLIST($inputData: PlaylistOperationInput!) {
+  removeVideoFromPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    videos {
+      videoId
+      title
+    }
+  }
+}
+    `;
+export type Remove_Video_From_PlaylistMutationFn = Apollo.MutationFunction<Remove_Video_From_PlaylistMutation, Remove_Video_From_PlaylistMutationVariables>;
+
+/**
+ * __useRemove_Video_From_PlaylistMutation__
+ *
+ * To run a mutation, you first call `useRemove_Video_From_PlaylistMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRemove_Video_From_PlaylistMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [removeVideoFromPlaylistMutation, { data, loading, error }] = useRemove_Video_From_PlaylistMutation({
+ *   variables: {
+ *      inputData: // value for 'inputData'
+ *   },
+ * });
+ */
+export function useRemove_Video_From_PlaylistMutation(baseOptions?: Apollo.MutationHookOptions<Remove_Video_From_PlaylistMutation, Remove_Video_From_PlaylistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Remove_Video_From_PlaylistMutation, Remove_Video_From_PlaylistMutationVariables>(Remove_Video_From_PlaylistDocument, options);
+      }
+export type Remove_Video_From_PlaylistMutationHookResult = ReturnType<typeof useRemove_Video_From_PlaylistMutation>;
+export type Remove_Video_From_PlaylistMutationResult = Apollo.MutationResult<Remove_Video_From_PlaylistMutation>;
+export type Remove_Video_From_PlaylistMutationOptions = Apollo.BaseMutationOptions<Remove_Video_From_PlaylistMutation, Remove_Video_From_PlaylistMutationVariables>;
 export const MeDocument = gql`
     query me {
   me {
@@ -589,3 +723,81 @@ export function usePlaylistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<P
 export type PlaylistQueryHookResult = ReturnType<typeof usePlaylistQuery>;
 export type PlaylistLazyQueryHookResult = ReturnType<typeof usePlaylistLazyQuery>;
 export type PlaylistQueryResult = Apollo.QueryResult<PlaylistQuery, PlaylistQueryVariables>;
+export const VideoDocument = gql`
+    query VIDEO($videoId: String!) {
+  video(videoId: $videoId) {
+    videoId
+    title
+    channel
+    views
+    thumbnail_url
+  }
+}
+    `;
+
+/**
+ * __useVideoQuery__
+ *
+ * To run a query within a React component, call `useVideoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVideoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVideoQuery({
+ *   variables: {
+ *      videoId: // value for 'videoId'
+ *   },
+ * });
+ */
+export function useVideoQuery(baseOptions: Apollo.QueryHookOptions<VideoQuery, VideoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<VideoQuery, VideoQueryVariables>(VideoDocument, options);
+      }
+export function useVideoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VideoQuery, VideoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<VideoQuery, VideoQueryVariables>(VideoDocument, options);
+        }
+export type VideoQueryHookResult = ReturnType<typeof useVideoQuery>;
+export type VideoLazyQueryHookResult = ReturnType<typeof useVideoLazyQuery>;
+export type VideoQueryResult = Apollo.QueryResult<VideoQuery, VideoQueryVariables>;
+export const VideosDocument = gql`
+    query VIDEOS {
+  videos {
+    videoId
+    title
+    category
+    channel
+    thumbnail_url
+    views
+  }
+}
+    `;
+
+/**
+ * __useVideosQuery__
+ *
+ * To run a query within a React component, call `useVideosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVideosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVideosQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useVideosQuery(baseOptions?: Apollo.QueryHookOptions<VideosQuery, VideosQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<VideosQuery, VideosQueryVariables>(VideosDocument, options);
+      }
+export function useVideosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VideosQuery, VideosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<VideosQuery, VideosQueryVariables>(VideosDocument, options);
+        }
+export type VideosQueryHookResult = ReturnType<typeof useVideosQuery>;
+export type VideosLazyQueryHookResult = ReturnType<typeof useVideosLazyQuery>;
+export type VideosQueryResult = Apollo.QueryResult<VideosQuery, VideosQueryVariables>;

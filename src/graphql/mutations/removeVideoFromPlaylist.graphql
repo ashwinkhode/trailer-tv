@@ -1,0 +1,10 @@
+mutation REMOVE_VIDEO_FROM_PLAYLIST($inputData: PlaylistOperationInput!) {
+  removeVideoFromPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    videos {
+      videoId
+      title
+    }
+  }
+}

@@ -1,0 +1,9 @@
+query VIDEO($videoId: String!) {
+  video(videoId: $videoId) {
+    videoId
+    title
+    channel
+    views
+    thumbnail_url
+  }
+}

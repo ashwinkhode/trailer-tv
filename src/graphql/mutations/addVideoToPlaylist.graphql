@@ -1,0 +1,10 @@
+mutation ADD_VIDEO_TO_PLAYLIST($inputData: PlaylistOperationInput!) {
+  addVideoToPlaylist(inputData: $inputData) {
+    playlistId
+    playlistName
+    videos {
+      videoId
+      title
+    }
+  }
+}

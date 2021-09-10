@@ -1,0 +1,10 @@
+query VIDEOS {
+  videos {
+    videoId
+    title
+    category
+    channel
+    thumbnail_url
+    views
+  }
+}
