@@ -2,11 +2,16 @@ import { useEffect } from 'react';
 import Avatar from 'react-avatar';
 import { useNavigate } from 'react-router';
 import SEO from '~/components/SEO/SEO';
-// import { useUser } from '~/context/UserContext';
-import { useMeQuery } from '~/generated/graphql';
+import { useUser } from '~/context/UserContext';
+import { useMeQuery, useLogoutMutation } from '~/generated/graphql';
 
 export default function UserProfile() {
-  // const { user, setUser } = useUser();
+  const { setUser } = useUser();
+  const [logout] = useLogoutMutation({
+    onCompleted: () => {
+      if (setUser) setUser({ userId: '', email: '' });
+    },
+  });
   const navigate = useNavigate();
   const { data, loading, error } = useMeQuery({
     fetchPolicy: 'no-cache',
@@ -39,7 +44,13 @@ export default function UserProfile() {
       <div className="m-8 mx-auto">{data?.me?.email}</div>
       <button
         className="py-2 px-4 text-gray-900 bg-gray-50 hover:bg-gray-100 active:bg-gray-200 rounded-full border-none focus:outline-none"
-        onClick={() => console.log('Logged Out')}
+        onClick={() => {
+          logout()
+            .then(() => {
+              navigate('/', { replace: false });
+            })
+            .catch((err) => console.error(err));
+        }}
       >
         Logout
       </button>

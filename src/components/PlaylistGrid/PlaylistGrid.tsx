@@ -3,24 +3,6 @@ import gql from 'graphql-tag';
 import { My_PlaylistsQuery } from '~/generated/graphql';
 import ThumbnailGrid from '../ThumbnailGrid/ThumbnailGrid';
 
-const PLAYLISTS = [
-  {
-    title: 'Must Watch Trailers of 2021',
-    channel: 'Omkar Kulkarni',
-    thumbnailURL: 'assets/trailer3.jpeg',
-  },
-  {
-    title: 'DC Trailers',
-    channel: 'Sushil Buragute',
-    thumbnailURL: 'assets/trailer4.jpeg',
-  },
-  {
-    title: 'Marvel Entertainment Trailers',
-    channel: 'Melvin Fernando',
-    thumbnailURL: 'assets/trailer5.jpeg',
-  },
-];
-
 export const MY_PLAYLISTS_QUERY = gql`
   query MY_PLAYLISTS {
     myPlaylists {
@@ -35,8 +17,12 @@ export const MY_PLAYLISTS_QUERY = gql`
 `;
 
 const PlaylistGrid = () => {
-  const { data, loading, error } =
-    useQuery<My_PlaylistsQuery>(MY_PLAYLISTS_QUERY);
+  const { data, loading, error } = useQuery<My_PlaylistsQuery>(
+    MY_PLAYLISTS_QUERY,
+    {
+      fetchPolicy: 'cache-and-network',
+    }
+  );
 
   const myPlaylistsArray =
     data?.myPlaylists.map((playlist) => ({
@@ -47,8 +33,7 @@ const PlaylistGrid = () => {
 
   if (loading) return <p>Loading Your Playlists. Please Wait...</p>;
   if (error) return <p className="text-red-500">{error.message}</p>;
-  if (!data?.myPlaylists || data.myPlaylists === [])
-    return <p>No Playlists 😔</p>;
+  if (data?.myPlaylists.length === 0) return <p>No Playlists 😔</p>;
   return <ThumbnailGrid variant="playlist" thumbnailArray={myPlaylistsArray} />;
 };
 

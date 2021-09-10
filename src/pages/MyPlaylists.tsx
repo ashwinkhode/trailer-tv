@@ -1,8 +1,11 @@
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import PlaylistGrid from '~/components/PlaylistGrid/PlaylistGrid';
+import { useUser } from '~/context/UserContext';
 import SEO from '../components/SEO/SEO';
 
 const MyPlaylists = () => {
+  const { user } = useUser();
   return (
     <div className="w-full flex flex-col justify-between lg:justify-start space-y-4 h-5/6 px-4 lg:py-6 lg:px-10 lg:mt-8">
       <SEO title="Playlists - TrailerTV | A Platform for Trailers" />
@@ -12,7 +15,12 @@ const MyPlaylists = () => {
         </h1>
         <div className="flex-row justify-end items-center lg:mr-2">
           <Link to="/new-playlist">
-            <button className="flex flex-row justify-center items-center gap-2">
+            <button
+              className={clsx(
+                user?.userId === '' ? 'hidden' : '',
+                'flex flex-row justify-center items-center gap-2'
+              )}
+            >
               Create New Playlist +
             </button>
           </Link>

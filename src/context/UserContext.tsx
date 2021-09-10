@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
 
 type UserContextType = {
-  userID: string;
+  userId: string;
   email: string;
 };
 
 export const INITIAL_STATE: UserContextType = {
-  userID: '',
+  userId: '',
   email: '',
 };
 

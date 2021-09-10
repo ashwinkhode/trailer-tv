@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { useHome } from './context/HomeContext';
+import { useUser } from './context/UserContext';
+import { useMeQuery } from './generated/graphql';
 import Playlist from './pages/Playlist';
 import UserProfile from './pages/UserProfile';
 import { AppRoutes } from './utils/router';
@@ -18,6 +20,8 @@ const BG = [
 export default function App() {
   const router = useLocation();
   const background = useHome();
+  const { setUser } = useUser();
+  const { data } = useMeQuery();
 
   useEffect(() => {
     BG.forEach((picture) => {
@@ -25,6 +29,15 @@ export default function App() {
       img.src = picture;
     });
   }, []);
+
+  useEffect(() => {
+    if (data?.me && setUser) {
+      setUser({
+        userId: data.me.userId,
+        email: data.me.email,
+      });
+    }
+  }, [data]);
 
   return (
     <div className="relative w-screen h-screen lg:p-12 overflow-hidden App">

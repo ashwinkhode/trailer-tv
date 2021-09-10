@@ -41,7 +41,7 @@ const SignUp = () => {
       if (response.data?.register.user) {
         if (setUser) {
           setUser({
-            userID: response.data.register.user.userId,
+            userId: response.data.register.user.userId,
             email: response.data.register.user.email,
           });
         }

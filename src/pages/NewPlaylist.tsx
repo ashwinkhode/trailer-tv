@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { MY_PLAYLISTS_QUERY } from '~/components/PlaylistGrid/PlaylistGrid';
@@ -7,6 +8,7 @@ import { useNewPlaylistMutation } from '~/generated/graphql';
 
 const NewPlaylist = () => {
   const navigate = useNavigate();
+  const [inputError, setInputError] = useState('');
 
   const {
     register,
@@ -26,13 +28,21 @@ const NewPlaylist = () => {
   });
 
   const onSubmit = async ({ playlistName }: { playlistName: string }) => {
-    await newPlaylist({
-      variables: {
-        inputData: {
-          playlistName,
+    try {
+      await newPlaylist({
+        variables: {
+          inputData: {
+            playlistName,
+          },
         },
-      },
-    });
+      });
+    } catch (err) {
+      setInputError(
+        err.message.includes('duplicate')
+          ? 'This name is already taken'
+          : 'Please try again'
+      );
+    }
   };
 
   return (
@@ -52,6 +62,7 @@ const NewPlaylist = () => {
           {formFieldError.playlistName?.type === 'required' && (
             <span className="text-red-500 mx-2">Playlist Name is required</span>
           )}
+          {inputError && <div className="text-red-500">{inputError}</div>}
         </label>
 
         <input

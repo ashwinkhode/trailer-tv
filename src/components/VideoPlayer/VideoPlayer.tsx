@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai';
 import { MdPlaylistAdd } from 'react-icons/md';
 import clsx from 'clsx';
@@ -15,7 +15,7 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
     requiredVideo as VideoMetadata;
   const viewsCountRounded =
     String(viewsCount).charAt(0) + String(viewsCount).charAt(1);
-  const isLiked = false;
+  const [isLiked, setLike] = useState(false);
   const videoURL = `https://www.youtube.com/embed/${video}`;
 
   return (
@@ -44,6 +44,7 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
         <div className="flex flex-col-reverse lg:flex-row lg:justify-between lg:items-end lg:pt-1">
           <div className="flex flex-row justify-center items-center lg:items-end space-x-4 lg:space-x-4">
             <button
+              onClick={() => setLike(!isLiked)}
               className={clsx(
                 'flex space-x-1 text-sm',
                 isLiked ? 'opacity-100' : 'opacity-80'
@@ -71,7 +72,7 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
               <span>{isLiked ? 'Added to Playlist' : 'Add to Playlist'}</span>
             </button>
           </div>
-          <p className="mb-1 text-sm lg:text-base text-right lg:w-1/4 opacity-90 leading-7">
+          <p className="mb-1 text-sm lg:text-base text-right opacity-90 leading-7">
             {`${viewsCountRounded}M views`} &middot; {`${uploadDuration} ago`}
           </p>
         </div>

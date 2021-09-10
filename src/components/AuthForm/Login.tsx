@@ -35,7 +35,7 @@ const Login = () => {
     if (response.data?.login.user) {
       if (setUser) {
         setUser({
-          userID: response.data.login.user.userId,
+          userId: response.data.login.user.userId,
           email: response.data.login.user.email,
         });
       }

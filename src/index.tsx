@@ -9,6 +9,7 @@ import {
 import App from './App';
 import { HomeContextProvider } from './context/HomeContext';
 import './index.css';
+import { UserProvider } from './context/UserContext';
 
 const link = createHttpLink({
   uri:
@@ -28,9 +29,11 @@ console.log('Graphql Endpoint', process.env.GRAPHQL_ENDPOINT);
 ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
-      <HomeContextProvider>
-        <App />
-      </HomeContextProvider>
+      <UserProvider>
+        <HomeContextProvider>
+          <App />
+        </HomeContextProvider>
+      </UserProvider>
     </ApolloProvider>
   </BrowserRouter>,
   document.getElementById('root')
