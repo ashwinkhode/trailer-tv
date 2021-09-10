@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { GrClose } from 'react-icons/gr';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   PlaylistDocument,
   useRemove_Video_From_PlaylistMutation,
@@ -13,28 +13,45 @@ type ThumbnailGridProps = {
   thumbnailArray: any[];
   variant?: string;
   forPlaylist?: boolean;
+  playlistId?: string;
 };
 
 const ThumbnailGrid = ({
   thumbnailArray,
   variant = 'video',
   forPlaylist = false,
+  playlistId,
 }: ThumbnailGridProps) => {
   const [removeVideoFromPlaylist] = useRemove_Video_From_PlaylistMutation({
-    refetchQueries: [{ query: PlaylistDocument }],
+    refetchQueries: [
+      {
+        query: PlaylistDocument,
+        variables: {
+          playlistId,
+        },
+      },
+    ],
   });
   return (
     <div className="min-w-full flex flex-wrap space-y-4 lg:space-y-0 overflow-hidden mb-8 sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
       {thumbnailArray.map((data) => (
         <div
-          key={data.title}
+          key={data.id}
           className="relative min-w-full w-full lg:min-w-min overflow-hidden  sm:w-full md:my-3 md:px-3 md:w-1/2 lg:!my-2 lg:!px-2 lg:!w-1/5 xl:mb-4 xl:mt-0 xl:px-2 xl:w-1/5"
         >
           {variant === 'video' ? (
             <>
               <button
                 onClick={() => {
-                  removeVideoFromPlaylist();
+                  if (playlistId)
+                    removeVideoFromPlaylist({
+                      variables: {
+                        inputData: {
+                          playlistId: playlistId,
+                          videoId: data.id,
+                        },
+                      },
+                    });
                 }}
                 className={clsx(
                   forPlaylist ? '' : 'hidden',

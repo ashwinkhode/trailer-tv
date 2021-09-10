@@ -48,7 +48,7 @@ const VideoPlayer = ({ video }: { video: VideoMetadata }) => {
               <AiFillLike className="w-6 h-6" />
               <span>{isLiked ? 'Dislike' : 'Like'}</span>
             </button>
-            <AddToPlaylistModal />
+            <AddToPlaylistModal video={video.videoId} />
           </div>
           <p className="mb-1 text-sm lg:text-base text-right opacity-90 leading-7">
             {`${viewsCountRounded}M views`} &middot; {`${uploadDate} years ago`}

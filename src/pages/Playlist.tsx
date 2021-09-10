@@ -23,11 +23,13 @@ export default function Playlist() {
     variables: {
       playlistId: id,
     },
+    fetchPolicy: 'cache-and-network',
   });
 
   const videosArray =
     (data?.playlist.videos &&
       data?.playlist.videos.map((video) => ({
+        id: video.videoId,
         title: video.title,
         channel: video.channel,
         viewsCount: video.views,
@@ -80,7 +82,11 @@ export default function Playlist() {
         {data.playlist.videos?.length === 0 ? (
           <p>No Videos 😔</p>
         ) : (
-          <ThumbnailGrid thumbnailArray={videosArray} forPlaylist={true} />
+          <ThumbnailGrid
+            thumbnailArray={videosArray}
+            forPlaylist={true}
+            playlistId={data.playlist.playlistId}
+          />
         )}
       </div>
     </div>

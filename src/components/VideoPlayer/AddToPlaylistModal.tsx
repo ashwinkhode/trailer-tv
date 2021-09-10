@@ -1,11 +1,6 @@
 import { useQuery } from '@apollo/client';
 import clsx from 'clsx';
-import {
-  BaseSyntheticEvent,
-  FormEventHandler,
-  useEffect,
-  useState,
-} from 'react';
+import { BaseSyntheticEvent, useState } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { MdPlaylistAdd } from 'react-icons/md';
 import Modal from 'react-modal';
@@ -17,7 +12,7 @@ import { MY_PLAYLISTS_QUERY } from '../PlaylistGrid/PlaylistGrid';
 
 Modal.setAppElement('#root');
 
-export default function AddToPlaylistModal() {
+export default function AddToPlaylistModal({ video }: { video: string }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formState, setFormState] = useState({ selectedOption: '' });
   const { data, error } = useQuery<My_PlaylistsQuery>(MY_PLAYLISTS_QUERY);
@@ -78,16 +73,16 @@ export default function AddToPlaylistModal() {
         <form
           onSubmit={(e: BaseSyntheticEvent) => {
             e.preventDefault();
-            // TODO: Take videoId as Props when done removing localdata
-            console.log('');
-            // addVideoToPlaylist({
-            //   variables: {
-            //     inputData: {
-            //       playlistId: formState.selectedOption,
-            //       videoId: '',
-            //     },
-            //   },
-            // });
+            addVideoToPlaylist({
+              variables: {
+                inputData: {
+                  playlistId: formState.selectedOption,
+                  videoId: video,
+                },
+              },
+            })
+              .catch((err) => console.error(err))
+              .finally(() => closeModal());
           }}
           className="flex flex-col gap-2"
         >
