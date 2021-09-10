@@ -61,3 +61,21 @@ body {
   stroke: white;
   stroke-width: 4;
 }
+
+.App {
+  animation-name: startup;
+  animation-duration: 1s;
+}
+
+@keyframes startup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bgTransition {
+  transition: background-image 0.5s;
+}
