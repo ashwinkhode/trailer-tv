@@ -1,16 +1,13 @@
 import { BsCollectionPlay } from 'react-icons/bs';
 import { BiHomeAlt } from 'react-icons/bi';
 import { MdMovieFilter } from 'react-icons/md';
-import { HiFire, HiOutlineSave } from 'react-icons/hi';
+import { HiFire } from 'react-icons/hi';
 import Home from '../pages/Home';
 import Trending from '../pages/Trending';
 import MyPlaylists from '../pages/MyPlaylists';
-import WatchLater from '../pages/WatchLater';
 import WatchVideo from '../pages/WatchVideo';
 import Login from '~/components/AuthForm/Login';
 import SignUp from '~/components/AuthForm/SignUp';
-import Playlist from '~/pages/Playlist';
-import UserProfile from '~/pages/UserProfile';
 import NewPlaylist from '~/pages/NewPlaylist';
 
 export const sidenavRoutes = [
@@ -32,12 +29,12 @@ export const sidenavRoutes = [
     element: MyPlaylists,
     icon: BsCollectionPlay,
   },
-  {
-    name: 'Watch Later',
-    path: 'saved',
-    element: WatchLater,
-    icon: HiOutlineSave,
-  },
+  // {
+  //   name: 'Watch Later',
+  //   path: 'saved',
+  //   element: WatchLater,
+  //   icon: HiOutlineSave,
+  // },
   {
     name: 'Trailer of the Day',
     path: 'watch/totd',
@@ -70,12 +67,12 @@ export const AppRoutes = [
     path: 'new-playlist',
     element: NewPlaylist,
   },
-  {
-    name: 'Watch Later',
-    path: 'saved',
-    element: WatchLater,
-    icon: HiOutlineSave,
-  },
+  // {
+  //   name: 'Watch Later',
+  //   path: 'saved',
+  //   element: WatchLater,
+  //   icon: HiOutlineSave,
+  // },
   {
     name: 'Login',
     path: 'login',
@@ -85,10 +82,5 @@ export const AppRoutes = [
     name: 'Sign Up',
     path: 'signup',
     element: SignUp,
-  },
-  {
-    name: 'Watch Video',
-    path: 'watch/:id',
-    element: WatchVideo,
   },
 ];

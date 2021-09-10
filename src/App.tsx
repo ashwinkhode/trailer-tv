@@ -7,6 +7,7 @@ import { useUser } from './context/UserContext';
 import { useMeQuery } from './generated/graphql';
 import Playlist from './pages/Playlist';
 import UserProfile from './pages/UserProfile';
+import WatchVideo from './pages/WatchVideo';
 import { AppRoutes } from './utils/router';
 
 const BG = [
@@ -51,6 +52,7 @@ export default function App() {
         <Routes>
           <Route path="profile" element={<UserProfile />} />
           <Route path="playlist/:id" element={<Playlist />} />
+          <Route path="watch/:id" element={<WatchVideo />} />
           {AppRoutes.map((route) => (
             <Route
               key={route.name}
