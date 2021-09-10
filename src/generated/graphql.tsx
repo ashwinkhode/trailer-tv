@@ -28,6 +28,7 @@ export type Mutation = {
   deletePlaylist: Playlist;
   login: UserResponse;
   register: UserResponse;
+  logout: Scalars['Boolean'];
   addVideo?: Maybe<Video>;
   removeVideo?: Maybe<Video>;
   seedVideos?: Maybe<Array<Video>>;
@@ -50,7 +51,7 @@ export type MutationRemoveVideoFromPlaylistArgs = {
 
 
 export type MutationDeletePlaylistArgs = {
-  inputData: PlaylistOperationInput;
+  playlistId: Scalars['String'];
 };
 
 
@@ -83,6 +84,7 @@ export type Playlist = {
   playlistName: Scalars['String'];
   videos?: Maybe<Array<Video>>;
   createdAt: Scalars['String'];
+  user: User;
 };
 
 export type PlaylistOperationInput = {
@@ -155,6 +157,19 @@ export type VideoInput = {
   category: Scalars['String'];
 };
 
+export type Delete_PlaylistMutationVariables = Exact<{
+  playlistId: Scalars['String'];
+}>;
+
+
+export type Delete_PlaylistMutation = (
+  { __typename?: 'Mutation' }
+  & { deletePlaylist: (
+    { __typename?: 'Playlist' }
+    & Pick<Playlist, 'playlistId'>
+  ) }
+);
+
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -177,6 +192,14 @@ export type LoginMutation = (
       & Pick<FieldError, 'field' | 'message'>
     )>> }
   ) }
+);
+
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'logout'>
 );
 
 export type NewPlaylistMutationVariables = Exact<{
@@ -251,11 +274,47 @@ export type PlaylistQuery = (
     & { videos?: Maybe<Array<(
       { __typename?: 'Video' }
       & Pick<Video, 'videoId' | 'title' | 'uploadedAt' | 'channel' | 'thumbnail_url' | 'views'>
-    )>> }
+    )>>, user: (
+      { __typename?: 'User' }
+      & Pick<User, 'userId'>
+    ) }
   ) }
 );
 
 
+export const Delete_PlaylistDocument = gql`
+    mutation DELETE_PLAYLIST($playlistId: String!) {
+  deletePlaylist(playlistId: $playlistId) {
+    playlistId
+  }
+}
+    `;
+export type Delete_PlaylistMutationFn = Apollo.MutationFunction<Delete_PlaylistMutation, Delete_PlaylistMutationVariables>;
+
+/**
+ * __useDelete_PlaylistMutation__
+ *
+ * To run a mutation, you first call `useDelete_PlaylistMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDelete_PlaylistMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deletePlaylistMutation, { data, loading, error }] = useDelete_PlaylistMutation({
+ *   variables: {
+ *      playlistId: // value for 'playlistId'
+ *   },
+ * });
+ */
+export function useDelete_PlaylistMutation(baseOptions?: Apollo.MutationHookOptions<Delete_PlaylistMutation, Delete_PlaylistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Delete_PlaylistMutation, Delete_PlaylistMutationVariables>(Delete_PlaylistDocument, options);
+      }
+export type Delete_PlaylistMutationHookResult = ReturnType<typeof useDelete_PlaylistMutation>;
+export type Delete_PlaylistMutationResult = Apollo.MutationResult<Delete_PlaylistMutation>;
+export type Delete_PlaylistMutationOptions = Apollo.BaseMutationOptions<Delete_PlaylistMutation, Delete_PlaylistMutationVariables>;
 export const LoginDocument = gql`
     mutation LOGIN($email: String!, $password: String!) {
   login(userInput: {email: $email, password: $password}) {
@@ -301,6 +360,36 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const LogoutDocument = gql`
+    mutation LOGOUT {
+  logout
+}
+    `;
+export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+
+/**
+ * __useLogoutMutation__
+ *
+ * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
+      }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
+export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const NewPlaylistDocument = gql`
     mutation NewPlaylist($inputData: NewPlaylistInput!) {
   newPlaylist(inputData: $inputData) {
@@ -465,6 +554,9 @@ export const PlaylistDocument = gql`
       channel
       thumbnail_url
       views
+    }
+    user {
+      userId
     }
   }
 }

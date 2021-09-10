@@ -11,5 +11,8 @@ query PLAYLIST($playlistId: String!) {
       thumbnail_url
       views
     }
+    user {
+      userId
+    }
   }
 }

@@ -1,0 +1,5 @@
+mutation DELETE_PLAYLIST($playlistId: String!) {
+  deletePlaylist(playlistId: $playlistId) {
+    playlistId
+  }
+}
