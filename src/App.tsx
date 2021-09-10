@@ -11,7 +11,7 @@ const BG = [
   'https://trailer-tv.vercel.app/6023a91cdf5c539e0c5b.jpg',
   'https://trailer-tv.vercel.app/0dee68533c000759c0dd.jpg',
   'https://trailer-tv.vercel.app/1291aca6f65e44a5451d.jpg',
-  'https://trailer-tv.vercel.app/41b4e2ddfb6fcd33937a.jpg',
+  'https://trailer-tv.vercel.app/a29233ae50de3553669f.jpg',
   'https://trailer-tv.vercel.app/c94397de3c1cecbad49a.jpg',
 ];
 
@@ -24,7 +24,7 @@ export default function App() {
       const img = new Image();
       img.src = picture;
     });
-  });
+  }, []);
 
   return (
     <div className="relative w-screen h-screen lg:p-12 overflow-hidden App">
