@@ -1,23 +1,23 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { My_PlaylistsQuery, useMy_PlaylistsQuery } from '~/generated/graphql';
+import { My_PlaylistsQuery } from '~/generated/graphql';
 import ThumbnailGrid from '../ThumbnailGrid/ThumbnailGrid';
 
 const PLAYLISTS = [
   {
     title: 'Must Watch Trailers of 2021',
     channel: 'Omkar Kulkarni',
-    thumbnailURL: 'assets/trailer3.jpg',
+    thumbnailURL: 'assets/trailer3.jpeg',
   },
   {
     title: 'DC Trailers',
     channel: 'Sushil Buragute',
-    thumbnailURL: 'assets/trailer4.jpg',
+    thumbnailURL: 'assets/trailer4.jpeg',
   },
   {
     title: 'Marvel Entertainment Trailers',
     channel: 'Melvin Fernando',
-    thumbnailURL: 'assets/trailer5.jpg',
+    thumbnailURL: 'assets/trailer5.jpeg',
   },
 ];
 

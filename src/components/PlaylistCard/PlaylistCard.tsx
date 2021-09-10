@@ -5,7 +5,7 @@ const PlaylistCard = ({
   id = '',
   title = 'Must Watch Trailers of 2021',
   channel = 'Omkar Kulkarni',
-  thumbnailURL = '../../assets/trailer1.jpg',
+  thumbnailURL = '../../assets/trailer1.jpeg',
   totalVideos = 0,
 }) => {
   return (

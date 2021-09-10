@@ -3,7 +3,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 const ThumbnailCard = ({
   title = 'Your Name - Official Trailer',
   channel = 'Funanimation',
-  thumbnailURL = '../../assets/trailer1.jpg',
+  thumbnailURL = '../../assets/trailer1.jpeg',
   viewsCount = '6.2',
   uploadDuration = '4 days',
 }) => {

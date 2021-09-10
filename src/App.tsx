@@ -8,11 +8,11 @@ import UserProfile from './pages/UserProfile';
 import { AppRoutes } from './utils/router';
 
 const BG = [
-  'https://trailer-tv.vercel.app/6023a91cdf5c539e0c5b.jpg',
-  'https://trailer-tv.vercel.app/0dee68533c000759c0dd.jpg',
-  'https://trailer-tv.vercel.app/1291aca6f65e44a5451d.jpg',
-  'https://trailer-tv.vercel.app/a29233ae50de3553669f.jpg',
-  'https://trailer-tv.vercel.app/c94397de3c1cecbad49a.jpg',
+  'https://trailer-tv.vercel.app/6023a91cdf5c539e0c5b.jpeg',
+  'https://trailer-tv.vercel.app/0dee68533c000759c0dd.jpeg',
+  'https://trailer-tv.vercel.app/1291aca6f65e44a5451d.jpeg',
+  'https://trailer-tv.vercel.app/a29233ae50de3553669f.jpeg',
+  'https://trailer-tv.vercel.app/c94397de3c1cecbad49a.jpeg',
 ];
 
 export default function App() {
