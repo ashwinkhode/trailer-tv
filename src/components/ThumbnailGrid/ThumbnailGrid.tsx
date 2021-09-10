@@ -1,7 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
 import { GrClose } from 'react-icons/gr';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+  PlaylistDocument,
+  useRemove_Video_From_PlaylistMutation,
+} from '~/generated/graphql';
 import PlaylistCard from '../PlaylistCard/PlaylistCard';
 import ThumbnailCard from '../ThumbnailCard/ThumbnailCard';
 
@@ -16,6 +20,9 @@ const ThumbnailGrid = ({
   variant = 'video',
   forPlaylist = false,
 }: ThumbnailGridProps) => {
+  const [removeVideoFromPlaylist] = useRemove_Video_From_PlaylistMutation({
+    refetchQueries: [{ query: PlaylistDocument }],
+  });
   return (
     <div className="min-w-full flex flex-wrap space-y-4 lg:space-y-0 overflow-hidden mb-8 sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
       {thumbnailArray.map((data) => (
@@ -27,7 +34,7 @@ const ThumbnailGrid = ({
             <>
               <button
                 onClick={() => {
-                  alert('Video Removed Implement');
+                  removeVideoFromPlaylist();
                 }}
                 className={clsx(
                   forPlaylist ? '' : 'hidden',
@@ -42,7 +49,6 @@ const ThumbnailGrid = ({
                   channel={data.channel}
                   thumbnailURL={data.thumbnailURL}
                   viewsCount={data.viewsCount}
-                  uploadDuration={data.uploadDuration}
                 />
               </Link>
             </>

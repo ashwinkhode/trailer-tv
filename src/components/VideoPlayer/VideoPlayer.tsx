@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
-import { AiFillLike, AiFillDislike } from 'react-icons/ai';
-import { MdPlaylistAdd } from 'react-icons/md';
+import { AiFillLike } from 'react-icons/ai';
 import clsx from 'clsx';
 import ThumbnailFlex from '../ThumbnailFlex/ThumbnailFlex';
-import {
-  recommendedData,
-  allVideos,
-  VideoMetadata,
-} from '../../utils/thumbnailData';
+import { trendingData, VideoMetadata } from '../../utils/thumbnailData';
+import AddToPlaylistModal from './AddToPlaylistModal';
 
-const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
-  const requiredVideo = allVideos.find((videoData) => videoData.id === video);
-  const { title, channel, viewsCount, uploadDuration } =
-    requiredVideo as VideoMetadata;
+const VideoPlayer = ({ video }: { video: VideoMetadata }) => {
   const viewsCountRounded =
-    String(viewsCount).charAt(0) + String(viewsCount).charAt(1);
+    String(video.views).charAt(0) + String(video.views).charAt(1);
   const [isLiked, setLike] = useState(false);
-  const videoURL = `https://www.youtube.com/embed/${video}`;
+  const ytCode = video.thumbnail_url?.split('/')[4];
+  const videoURL = `https://www.youtube.com/embed/${ytCode}`;
+  const uploadDate = Math.floor(Math.random() * 10);
 
   return (
     <div className="lg:mt-8 min-w-full h-full flex flex-col lg:flex-row lg:justify-between">
       <div className="w-full lg:w-4/6 flex flex-col space-y-2">
         <div className="flex flex-row lg:justify-between items-end">
           <div className="w-full flex flex-col lg:inline-flex lg:items-start">
-            <h1 className="font-semibold text-lg lg:font-bold lg:text-2xl truncate">
-              {title}
+            <h1 className="font-semibold text-lg lg:font-bold lg:text-2xl truncate whitespace-pre-wrap">
+              {video.title}
             </h1>
-            <h2 className="text-sm lg:text-base opacity-80 lg:leading-7 truncate">{`By ${channel}`}</h2>
+            <h2 className="text-sm lg:text-base opacity-80 lg:leading-7 truncate">{`By ${video.channel}`}</h2>
           </div>
         </div>
         <div className="aspect-h-9 lg:aspect-h-8 aspect-w-16">
@@ -51,29 +46,12 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
               )}
             >
               <AiFillLike className="w-6 h-6" />
-              <span>{isLiked ? 'Liked' : 'Like'}</span>
+              <span>{isLiked ? 'Dislike' : 'Like'}</span>
             </button>
-            <button
-              className={clsx(
-                'flex space-x-1 text-sm',
-                isLiked ? 'opacity-100' : 'opacity-80'
-              )}
-            >
-              <AiFillDislike className="w-6 h-6" />
-              <span>{isLiked ? 'Disliked' : 'Dislike'}</span>
-            </button>
-            <button
-              className={clsx(
-                'flex space-x-1 text-sm',
-                isLiked ? 'opacity-100' : 'opacity-80'
-              )}
-            >
-              <MdPlaylistAdd className="w-6 h-6" />
-              <span>{isLiked ? 'Added to Playlist' : 'Add to Playlist'}</span>
-            </button>
+            <AddToPlaylistModal />
           </div>
           <p className="mb-1 text-sm lg:text-base text-right opacity-90 leading-7">
-            {`${viewsCountRounded}M views`} &middot; {`${uploadDuration} ago`}
+            {`${viewsCountRounded}M views`} &middot; {`${uploadDate} years ago`}
           </p>
         </div>
       </div>
@@ -83,7 +61,7 @@ const VideoPlayer = ({ video = 'nW948Va-l10' }) => {
           <h1 className="font-semibold text-lg lg:text-2xl">Related Videos</h1>
           <ThumbnailFlex
             heading=""
-            thumbnailArray={recommendedData}
+            thumbnailArray={trendingData}
             variant="column"
           />
         </div>

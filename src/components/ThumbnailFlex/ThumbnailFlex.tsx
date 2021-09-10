@@ -29,22 +29,17 @@ const ThumbnailFlex = ({
           )}
         >
           {thumbnailArray.map(
-            ({
-              id,
-              title,
-              channel,
-              viewsCount,
-              uploadDuration,
-              thumbnailURL,
-            }) => (
-              <div className="min-w-[89%] mr-8 lg:min-w-min lg:mr-0" key={id}>
-                <Link to={`/watch/${id}`}>
+            ({ videoId, title, channel, views, thumbnail_url }) => (
+              <div
+                className="min-w-[89%] mr-8 lg:min-w-min lg:mr-0"
+                key={videoId}
+              >
+                <Link to={`/watch/${videoId}`}>
                   <ThumbnailCard
                     title={title}
                     channel={channel}
-                    thumbnailURL={thumbnailURL}
-                    viewsCount={viewsCount}
-                    uploadDuration={uploadDuration}
+                    thumbnailURL={thumbnail_url}
+                    viewsCount={views}
                   />
                 </Link>
               </div>

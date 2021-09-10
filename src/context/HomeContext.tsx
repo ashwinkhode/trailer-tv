@@ -6,10 +6,9 @@ type HomeContextType = VideoMetadata & {
 };
 
 const INITIAL_STATE: HomeContextType = {
-  id: trendingData[0].id,
+  videoId: trendingData[0].videoId,
   title: trendingData[0].title,
   channel: trendingData[0].channel,
-  description: 'Delete this part',
   bg: 'bg-nobody',
 };
 
@@ -17,37 +16,33 @@ const HomeStateContext = createContext(INITIAL_STATE);
 const HomeDispatchContext = createContext<React.Dispatch<any> | null>(null);
 
 const homeReducer = (state: HomeContextType, action: any) => {
-  switch (action.payload.id) {
-    case trendingData[1].id:
+  switch (action.payload.videoId) {
+    case trendingData[1].videoId:
       return {
-        id: trendingData[1].id,
+        videoId: trendingData[1].videoId,
         title: trendingData[1].title,
         channel: trendingData[1].channel,
-        description: 'Delete this part',
         bg: 'bg-coming2america',
       };
-    case trendingData[2].id:
+    case trendingData[2].videoId:
       return {
-        id: trendingData[2].id,
+        videoId: trendingData[2].videoId,
         title: trendingData[2].title,
         channel: trendingData[2].channel,
-        description: 'Delete this part',
         bg: 'bg-loki',
       };
-    case trendingData[3].id:
+    case trendingData[3].videoId:
       return {
-        id: trendingData[3].id,
+        videoId: trendingData[3].videoId,
         title: trendingData[3].title,
         channel: trendingData[3].channel,
-        description: 'Delete this part',
         bg: 'bg-falcon',
       };
-    case trendingData[4].id:
+    case trendingData[4].videoId:
       return {
-        id: trendingData[4].id,
+        videoId: trendingData[4].videoId,
         title: trendingData[4].title,
         channel: trendingData[4].channel,
-        description: 'Delete this part',
         bg: 'bg-jack',
       };
     default:

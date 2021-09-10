@@ -1,20 +1,20 @@
 import { BsArrowRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useHomeDispatch } from '~/context/HomeContext';
-import { trendingData } from '~/utils/thumbnailData';
+import { trendingData, VideoMetadata } from '~/utils/thumbnailData';
 import SmartCompressedImage from '../SmartCompressedImage/SmartCompressedImage';
 
 export default function TrendingCards() {
   const dispatchToHome = useHomeDispatch();
   return (
     <div className="w-full hidden lg:flex flex-row space-x-6 ">
-      {trendingData.map(({ thumbnailURL, title, id }: any) => (
-        <Link to={`watch/${id}`} key={title}>
+      {trendingData.map(({ thumbnail_url, title, videoId }: VideoMetadata) => (
+        <Link to={`watch/${videoId}`} key={title}>
           <img
             alt={title}
             src={
-              thumbnailURL
-                ? SmartCompressedImage(thumbnailURL, '200')
+              thumbnail_url
+                ? SmartCompressedImage(thumbnail_url, '200')
                 : undefined
             }
             width="200"
@@ -23,7 +23,7 @@ export default function TrendingCards() {
               if (dispatchToHome) {
                 dispatchToHome({
                   payload: {
-                    id,
+                    videoId,
                   },
                 });
               }

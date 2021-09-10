@@ -9,7 +9,6 @@ import {
   useDelete_PlaylistMutation,
   My_PlaylistsDocument,
 } from '~/generated/graphql';
-import { latestData } from '~/utils/thumbnailData';
 
 export default function Playlist() {
   const { id } = useParams();
@@ -25,6 +24,16 @@ export default function Playlist() {
       playlistId: id,
     },
   });
+
+  const videosArray =
+    (data?.playlist.videos &&
+      data?.playlist.videos.map((video) => ({
+        title: video.title,
+        channel: video.channel,
+        viewsCount: video.views,
+        thumbnailURL: video.thumbnail_url,
+      }))) ||
+    [];
 
   if (loading) return <p>Loading Your Playlists. Please Wait...</p>;
   if (error) return <p className="text-red-500">{error.message}</p>;
@@ -71,7 +80,7 @@ export default function Playlist() {
         {data.playlist.videos?.length === 0 ? (
           <p>No Videos 😔</p>
         ) : (
-          <ThumbnailGrid thumbnailArray={latestData} forPlaylist={true} />
+          <ThumbnailGrid thumbnailArray={videosArray} forPlaylist={true} />
         )}
       </div>
     </div>

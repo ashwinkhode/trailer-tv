@@ -5,8 +5,8 @@ const ThumbnailCard = ({
   channel = 'Funanimation',
   thumbnailURL = '../../assets/trailer1.jpeg',
   viewsCount = '6.2',
-  uploadDuration = '4 days',
 }) => {
+  const uploadDate = Math.floor(Math.random() * 10);
   const viewsCountRounded =
     String(viewsCount).charAt(0) + String(viewsCount).charAt(1);
   return (
@@ -20,7 +20,7 @@ const ThumbnailCard = ({
           {channel} <FaCheckCircle />
         </h2>
         <p className="opacity-60 text-sm">
-          {`${viewsCountRounded}M views`} &middot; {`${uploadDuration} ago`}
+          {`${viewsCountRounded}M views`} &middot; {`${uploadDate} years ago`}
         </p>
       </div>
     </div>
