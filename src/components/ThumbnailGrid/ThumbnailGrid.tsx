@@ -10,7 +10,7 @@ import PlaylistCard from '../PlaylistCard/PlaylistCard';
 import ThumbnailCard from '../ThumbnailCard/ThumbnailCard';
 
 type ThumbnailGridProps = {
-  thumbnailArray: any[];
+  thumbnailArray: any[] | undefined;
   variant?: string;
   forPlaylist?: boolean;
   playlistId?: string;
@@ -33,10 +33,10 @@ const ThumbnailGrid = ({
     ],
   });
   return (
-    <div className="min-w-full flex flex-wrap space-y-4 lg:space-y-0 overflow-hidden mb-8 sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
-      {thumbnailArray.map((data) => (
+    <div className="min-w-full lg:min-w-min lg:w-full flex flex-wrap space-y-4 lg:space-y-0 overflow-hidden mb-8 sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
+      {thumbnailArray?.map((data, idx) => (
         <div
-          key={data.id}
+          key={idx}
           className="relative min-w-full w-full lg:min-w-min overflow-hidden  sm:w-full md:my-3 md:px-3 md:w-1/2 lg:!my-2 lg:!px-2 lg:!w-1/5 xl:mb-4 xl:mt-0 xl:px-2 xl:w-1/5"
         >
           {variant === 'video' ? (
@@ -64,17 +64,17 @@ const ThumbnailGrid = ({
                 <ThumbnailCard
                   title={data.title}
                   channel={data.channel}
-                  thumbnailURL={data.thumbnailURL}
-                  viewsCount={data.viewsCount}
+                  thumbnailURL={data.thumbnail_url}
+                  viewsCount={data.views}
                 />
               </Link>
             </>
           ) : (
             <PlaylistCard
-              key={data.title}
+              key={idx}
               id={data.id}
               title={data.title}
-              thumbnailURL={data.thumbnailURL}
+              thumbnailURL={data.thumbnail_url}
               totalVideos={data?.videos !== null ? data.videos.length : 0}
             />
           )}

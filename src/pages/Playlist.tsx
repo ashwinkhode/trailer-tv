@@ -37,7 +37,12 @@ export default function Playlist() {
       }))) ||
     [];
 
-  if (loading) return <p>Loading Your Playlists. Please Wait...</p>;
+  if (loading)
+    return (
+      <p className="lg:mt-10 ml-4 lg:ml-6">
+        Loading Your Playlists. Please Wait...
+      </p>
+    );
   if (error) return <p className="text-red-500">{error.message}</p>;
   if (!data)
     return (

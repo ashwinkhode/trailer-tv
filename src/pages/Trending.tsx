@@ -6,7 +6,6 @@ const Trending = () => {
   const { data, loading, error } = useVideosQuery({
     fetchPolicy: 'cache-first',
   });
-
   const recommendedData = data?.videos?.filter(
     (video) => video.category === 'recommended'
   );
@@ -20,8 +19,10 @@ const Trending = () => {
     (video) => video.category === 'popular'
   );
 
-  if (loading) return <p>Loading! Please Wait...</p>;
-  if (error || !data) return <p>Please try again</p>;
+  if (loading)
+    return <p className="lg:mt-10 ml-4 lg:ml-6">Loading! Please Wait...</p>;
+  if (error || !data)
+    return <p className="lg:mt-10 ml-4 lg:ml-6">Please try again</p>;
   return (
     <div className="flex flex-col lg:justify-between space-y-6 px-4 mb-36 lg:mb-0 lg:mt-8 lg:h-5/6 lg:py-6 lg:px-10 lg:overflow-y-scroll lg:scrollbars disable-scrollbars">
       <SEO title="Trending - TrailerTV | A Platform for Trailers" />

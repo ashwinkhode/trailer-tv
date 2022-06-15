@@ -7,6 +7,7 @@ import { useUser } from './context/UserContext';
 import { useMeQuery } from './generated/graphql';
 import Playlist from './pages/Playlist';
 import UserProfile from './pages/UserProfile';
+import WatchLater from './pages/WatchLater';
 import WatchVideo from './pages/WatchVideo';
 import { AppRoutes } from './utils/router';
 
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="profile" element={<UserProfile />} />
           <Route path="playlist/:id" element={<Playlist />} />
           <Route path="watch/:id" element={<WatchVideo />} />
+          <Route path="saved" element={<WatchLater />} />
           {AppRoutes.map((route) => (
             <Route
               key={route.name}

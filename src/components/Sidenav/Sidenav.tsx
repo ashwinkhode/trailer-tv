@@ -1,27 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
 import { sidenavRoutes } from '../../utils/router';
 
-type sidenavPropsType = {
-  menuToggle?: boolean;
-  setMenuToggle?: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export default function Sidenav({
-  menuToggle,
-  setMenuToggle,
-}: sidenavPropsType) {
+export default function Sidenav() {
   // TODO: fix responsive bug issue
   return (
     <div className="relative w-full lg:h-full flex justify-center items-center lg:flex-col lg:justify-start lg:items-start bg-[#181818] ">
-      <div
-        onClick={() => (setMenuToggle ? setMenuToggle(!menuToggle) : undefined)}
-        className="hidden lg:block w-full hover:bg-[#252525] cursor-pointer overflow-hidden"
-      >
-        <li className="m-6 w-full list-none" aria-label="Menu">
-          <BiMenu className="w-1/3 h-full" />
-        </li>
-      </div>
       {sidenavRoutes.map((link) => (
         <Link
           key={link.name}
@@ -34,7 +18,7 @@ export default function Sidenav({
         </Link>
       ))}
       {/* Only renders on large displays */}
-      {menuToggle && (
+      {/* {menuToggle && (
         <div className="hidden absolute w-[250%] h-full lg:flex flex-col items-start bg-[#181818] z-10 shadow-sidenav">
           <li
             className="p-6 w-full flex flex-row justify-start items-center gap-x-2 hover:bg-[#252525] cursor-pointer list-none"
@@ -58,7 +42,7 @@ export default function Sidenav({
             </Link>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

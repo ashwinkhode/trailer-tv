@@ -13,8 +13,9 @@ const WatchVideo = () => {
   });
 
   // TODO: Add dynamic SEO with AuthCheck
-  if (loading) return <p>Loading</p>;
-  if (error || !data?.video) return <p>Please try again</p>;
+  if (loading) return <p className="lg:mt-10 ml-4 lg:ml-6">Loading</p>;
+  if (error || !data?.video)
+    return <p className="lg:mt-10 ml-4 lg:ml-6">Please try again</p>;
   return (
     <div className="h-5/6 min-w-full px-4 lg:py-6 lg:px-10">
       <SEO />

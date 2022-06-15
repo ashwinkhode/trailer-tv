@@ -1,15 +1,21 @@
 import { BsArrowRight } from 'react-icons/bs';
+import { useVideosQuery } from '~/generated/graphql';
 import SEO from '../components/SEO/SEO';
 import ThumbnailGrid from '../components/ThumbnailGrid/ThumbnailGrid';
 
-import {
-  latestData,
-  popularData,
-  recommendedData,
-  trendingData,
-} from '../utils/thumbnailData';
-
 const WatchLater = () => {
+  const { data, loading, error } = useVideosQuery({
+    fetchPolicy: 'cache-first',
+  });
+
+  const trendingData = data?.videos?.filter(
+    (video) => video.category === 'trending'
+  );
+
+  if (loading)
+    return <p className="lg:mt-10 ml-4 lg:ml-6">Loading! Please Wait...</p>;
+  if (error || !data)
+    return <p className="lg:mt-10 ml-4 lg:ml-6">Please try again</p>;
   return (
     <div className="flex flex-col justify-between space-y-4 h-5/6 px-4 lg:py-6 lg:px-10 lg:mt-8 ">
       <SEO title="Playlists - TrailerTV | A Platform for Trailers" />
@@ -24,15 +30,8 @@ const WatchLater = () => {
           </button>
         </div>
       </div>
-      <div className="w-full h-full overflow-y-scroll lg:scrollbars disable-scrollbars">
-        <ThumbnailGrid
-          thumbnailArray={[
-            ...recommendedData,
-            ...popularData,
-            ...trendingData,
-            ...latestData,
-          ]}
-        />
+      <div className="w-full h-full overflow-y-scroll scrollbars disable-scrollbars">
+        <ThumbnailGrid thumbnailArray={trendingData?.slice(0, 3)} />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { BsCollectionPlay } from 'react-icons/bs';
 import { BiHomeAlt } from 'react-icons/bi';
 import { MdMovieFilter } from 'react-icons/md';
-import { HiFire } from 'react-icons/hi';
+import { HiFire, HiOutlineSave } from 'react-icons/hi';
 import Home from '../pages/Home';
 import Trending from '../pages/Trending';
 import MyPlaylists from '../pages/MyPlaylists';
@@ -9,6 +9,7 @@ import WatchVideo from '../pages/WatchVideo';
 import Login from '~/components/AuthForm/Login';
 import SignUp from '~/components/AuthForm/SignUp';
 import NewPlaylist from '~/pages/NewPlaylist';
+import WatchLater from '~/pages/WatchLater';
 
 export const sidenavRoutes = [
   {
@@ -29,12 +30,12 @@ export const sidenavRoutes = [
     element: MyPlaylists,
     icon: BsCollectionPlay,
   },
-  // {
-  //   name: 'Watch Later',
-  //   path: 'saved',
-  //   element: WatchLater,
-  //   icon: HiOutlineSave,
-  // },
+  {
+    name: 'Watch Later',
+    path: 'saved',
+    element: WatchLater,
+    icon: HiOutlineSave,
+  },
   {
     name: 'Trailer of the Day',
     path: 'watch/totd',

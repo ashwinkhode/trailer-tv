@@ -57,8 +57,8 @@ const SignUp = () => {
       <div className="lg:w-1/2 lg:h-1/2 flex flex-col justify-center items-center space-y-4 lg:border-r-2 lg:border-gray-300">
         <h1 className="font-bold text-6xl">Sign Up</h1>
       </div>
-      <div className="lg:w-1/2 lg:h-full flex flex-col justify-center items-center">
-        <div className="lg:w-2/3 m-8 lg:mx-auto flex flex-col justify-center space-y-4">
+      <div className="w-full lg:w-1/2 lg:h-full flex flex-col justify-center items-center">
+        <div className="w-full px-8 lg:px-0 lg:w-2/3 m-8 lg:mx-auto flex flex-col justify-center space-y-4">
           <form
             className="relative flex flex-col justify-center space-y-4"
             onSubmit={handleSubmit(onSubmit)}

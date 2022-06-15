@@ -4,7 +4,7 @@ import ThumbnailCard from '../ThumbnailCard/ThumbnailCard';
 
 type ThumbnailFlexProps = {
   heading: string;
-  thumbnailArray: any[];
+  thumbnailArray: any[] | undefined;
   variant?: 'row' | 'column';
 };
 
@@ -28,10 +28,10 @@ const ThumbnailFlex = ({
             'max-w-[100vw] w-screen flex-row flex-1 lg:w-full flex overflow-x-auto lg:overflow-x-hidden'
           )}
         >
-          {thumbnailArray.map(
+          {thumbnailArray?.map(
             ({ videoId, title, channel, views, thumbnail_url }) => (
               <div
-                className="min-w-[89%] mr-8 lg:min-w-min lg:mr-0"
+                className="min-w-[85%] mr-8 lg:min-w-min lg:mr-0 last:pr-4"
                 key={videoId}
               >
                 <Link to={`/watch/${videoId}`}>

@@ -10,7 +10,7 @@ const ThumbnailCard = ({
   const viewsCountRounded =
     String(viewsCount).charAt(0) + String(viewsCount).charAt(1);
   return (
-    <div className=" h-full mx-auto flex flex-col rounded-xl  bg-[#1A1A1A] shadow-thumbnailCard">
+    <div className=" h-full mx-auto flex flex-col rounded-xl  bg-[#1A1A1A]">
       <div className="relative w-full rounded-t-xl overflow-hidden">
         <img src={thumbnailURL} alt={title} aria-label={title} />
       </div>
