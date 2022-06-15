@@ -14,7 +14,7 @@ import { UserProvider } from './context/UserContext';
 const link = createHttpLink({
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'https://trailer-tv-server.herokuapp.com/graphql'
+      ? process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT
       : 'http://localhost:4000/graphql',
   credentials: 'include',
 });
@@ -24,7 +24,7 @@ const client = new ApolloClient({
   link,
 });
 
-console.log('Graphql Endpoint', process.env.GRAPHQL_ENDPOINT);
+console.log(`${process.env.NODE_ENV} Graphql Endpoint`, process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT);
 
 ReactDOM.render(
   <BrowserRouter>
