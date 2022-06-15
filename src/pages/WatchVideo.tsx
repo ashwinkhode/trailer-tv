@@ -8,7 +8,7 @@ const WatchVideo = () => {
   const { id } = useParams();
   const { data, loading, error } = useVideoQuery({
     variables: {
-      videoId: id === 'totd' ? 'd68a5f54-fecc-444a-b450-2de1f9d8e8ef' : id,
+      videoId: id === 'totd' ? 'f18e30ee-ef91-4579-857a-5454100635ac' : id,
     },
   });
 
