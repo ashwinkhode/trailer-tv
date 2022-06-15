@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import {
   ApolloClient,
   ApolloProvider,
@@ -24,10 +24,8 @@ const client = new ApolloClient({
   link,
 });
 
-console.log(`${process.env.NODE_ENV} Graphql Endpoint`, process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT);
-
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <ApolloProvider client={client}>
       <UserProvider>
         <HomeContextProvider>
@@ -35,6 +33,6 @@ ReactDOM.render(
         </HomeContextProvider>
       </UserProvider>
     </ApolloProvider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );
